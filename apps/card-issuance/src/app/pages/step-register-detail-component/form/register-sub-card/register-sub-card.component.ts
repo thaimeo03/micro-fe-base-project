@@ -78,7 +78,7 @@ interface SelectItem {
   templateUrl: './register-sub-card.component.html',
   styleUrls: ['./register-sub-card.component.less'],
 })
-export class RegisterSubCardComponent implements OnInit {
+export class RegisterSubCardComponent {
   private fb = inject(FormBuilder);
   private issuanceServices = inject(IssuanceServices);
 
@@ -195,28 +195,27 @@ export class RegisterSubCardComponent implements OnInit {
   protected readonly stringifyCombobox = (item: SelectItem): string =>
     `${item.label}`;
 
-  formSubCard = this.fb.group({
-    subCardItemForms: this.fb.array([this.getSubCardItemGroup()]),
-    transactionOffice: new FormControl(this.transactionOffice[0]),
-    placeRec: new FormControl(this.placeReceivice[0]),
-    detailAdd: new FormControl({ value: '', disabled: true }),
-    cardHolderName: new FormControl({ value: '', disabled: true }),
-    cardProduct: new FormControl({ value: '', disabled: true }),
-    province: new FormControl(this.listProvince[0]),
-    district: new FormControl(this.listDistrict[0]),
-    ward: new FormControl(this.listWard[0]),
-    homeAddress: new FormControl(''),
-  });
+  formSubCard: FormGroup;
 
-  ngOnInit(): void {
-    const preData = this.issuanceServices.getStepData('step-4-sub');
-    if (preData) {
-      this.formSubCard.patchValue(preData);
-      this.subCardItemForms.patchValue(preData.subCardItemForms);
-    }
+  constructor() {
+    this.formSubCard = this.initializeForm();
+  }
 
-    this.formSubCard.valueChanges.subscribe((value) => {
-      this.issuanceServices.updateStepData('step-4-sub', value);
+  initializeForm() {
+    if (this.issuanceServices.formSubCard)
+      return this.issuanceServices.formSubCard;
+
+    return this.issuanceServices.setFormSubCard({
+      subCardItemForms: this.fb.array([this.getSubCardItemGroup()]),
+      transactionOffice: new FormControl(this.transactionOffice[0]),
+      placeRec: new FormControl(this.placeReceivice[0]),
+      detailAdd: new FormControl({ value: '', disabled: true }),
+      cardHolderName: new FormControl({ value: '', disabled: true }),
+      cardProduct: new FormControl({ value: '', disabled: true }),
+      province: new FormControl(this.listProvince[0]),
+      district: new FormControl(this.listDistrict[0]),
+      ward: new FormControl(this.listWard[0]),
+      homeAddress: new FormControl(''),
     });
   }
 

@@ -45,6 +45,13 @@ export class FinalInfoCustomerComponent implements OnInit {
   subCardData!: any;
   feeCollectionData!: any;
 
+  constructor() {
+    this.mainCardData = this.issuanceService.formMainCard?.value || {};
+    this.subCardData = this.issuanceService.formSubCard?.value || {};
+    this.feeCollectionData =
+      this.issuanceService.feeCollectionForm?.value || {};
+  }
+
   ngOnInit(): void {
     this.issuanceService.stepData$.subscribe((data) => {
       // if (!data['step-2']) this.router.navigate([issuanceRouter[1]]);
@@ -58,9 +65,9 @@ export class FinalInfoCustomerComponent implements OnInit {
       console.info(data);
 
       this.userInfoData = data['step-2'];
-      this.mainCardData = data['step-4-main'];
-      this.subCardData = data['step-4-sub'];
-      this.feeCollectionData = data['step-4-fee'];
+      // this.mainCardData = data['step-4-main'];
+      // this.subCardData = data['step-4-sub'];
+      // this.feeCollectionData = data['step-4-fee'];
     });
   }
 

@@ -82,7 +82,7 @@ interface SelectItem {
     }),
   ],
 })
-export class RegisterMainCardComponent implements OnInit {
+export class RegisterMainCardComponent {
   private issuanceServices = inject(IssuanceServices);
 
   @Input()
@@ -146,29 +146,32 @@ export class RegisterMainCardComponent implements OnInit {
 
   protected readonly cardForm = ['Thẻ vật lý', 'Thẻ phi vật lý'];
 
-  formMainCard = new FormGroup({
-    cardType: new FormControl(this.typeCard[0]),
-    productCode: new FormControl(this.productCode[0]),
-    name: new FormControl('', [Validators.required, Validators.maxLength(26)]),
-    cardCusGr: new FormControl(null, [Validators.required]),
-    mainAcc: new FormControl(null, [Validators.required]),
-    question: new FormControl(this.questions[0]),
-    answer: new FormControl('', [Validators.required]),
-    cardForm: new FormControl(this.cardForm[0]),
-    printPin: new FormControl(false),
-    annualFee: new FormControl(this.annualFees[0]),
-    subAcc: new FormControl(null),
-    staff: new FormControl(this.staffId[0]),
-  });
+  formMainCard: FormGroup;
 
-  ngOnInit(): void {
-    const preData = this.issuanceServices.getStepData('step-4-main');
-    if (preData) {
-      this.formMainCard.patchValue(preData);
-    }
+  constructor() {
+    this.formMainCard = this.initializeForm();
+  }
 
-    this.formMainCard.valueChanges.subscribe((value) => {
-      this.issuanceServices.updateStepData('step-4-main', value);
+  initializeForm(): FormGroup {
+    if (this.issuanceServices.formMainCard)
+      return this.issuanceServices.formMainCard;
+
+    return this.issuanceServices.setFormMainCard({
+      cardType: new FormControl(this.typeCard[0]),
+      productCode: new FormControl(this.productCode[0]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(26),
+      ]),
+      cardCusGr: new FormControl(null, [Validators.required]),
+      mainAcc: new FormControl(null, [Validators.required]),
+      question: new FormControl(this.questions[0]),
+      answer: new FormControl('', [Validators.required]),
+      cardForm: new FormControl(this.cardForm[0]),
+      printPin: new FormControl(false),
+      annualFee: new FormControl(this.annualFees[0]),
+      subAcc: new FormControl(null),
+      staff: new FormControl(this.staffId[0]),
     });
   }
 }

@@ -76,29 +76,36 @@ export class FeeCollectionComponent implements OnInit {
     { label: '01234567890 - 150,000,000 VND', value: 2 },
   ];
 
-  feeCollectionForm = new FormGroup({
-    typeFee: new FormControl(this.feeType[0], Validators.required),
-    mainCardFee: new FormControl(0, Validators.required),
-    subCardFee: new FormControl(0, Validators.required),
-    addressFee: new FormControl(0, Validators.required),
-    accountFee: new FormControl(null),
-  });
+  feeCollectionForm: FormGroup;
+
+  constructor() {
+    this.feeCollectionForm = this.initializeForm();
+  }
 
   private VAT = 10;
   totalFee = 0;
   VATFee = 0;
   revenueFee = 0;
 
-  ngOnInit(): void {
-    // Get pre data
-    const preData = this.issuanceServices.getStepData('step-4-fee');
-    if (preData) {
-      this.feeCollectionForm.patchValue(preData);
-      this.totalFee = preData.totalFee;
-      this.VATFee = preData.VATFee;
-      this.revenueFee = preData.revenueFee;
+  initializeForm() {
+    if (this.issuanceServices.feeCollectionForm) {
+      this.totalFee = this.issuanceServices.feeCollectionForm.value.totalFee;
+      this.VATFee = this.issuanceServices.feeCollectionForm.value.VATFee;
+      this.revenueFee =
+        this.issuanceServices.feeCollectionForm.value.revenueFee;
+      return this.issuanceServices.feeCollectionForm;
     }
 
+    return this.issuanceServices.setFeeCollectionForm({
+      typeFee: new FormControl(this.feeType[0], Validators.required),
+      mainCardFee: new FormControl(0, Validators.required),
+      subCardFee: new FormControl(0, Validators.required),
+      addressFee: new FormControl(0, Validators.required),
+      accountFee: new FormControl(null),
+    });
+  }
+
+  ngOnInit(): void {
     // Handle calculate fee
     this.feeCollectionForm
       .get('mainCardFee')
@@ -120,16 +127,6 @@ export class FeeCollectionComponent implements OnInit {
         const [mainCardFeeValue, subCardFeeValue, _] = this.getFeeValues();
         this.calculateFee(mainCardFeeValue, subCardFeeValue, value);
       });
-
-    // Handle share form
-    this.feeCollectionForm.valueChanges.subscribe((value) => {
-      this.issuanceServices.updateStepData('step-4-fee', {
-        ...value,
-        totalFee: this.totalFee,
-        VATFee: this.VATFee,
-        revenueFee: this.revenueFee,
-      });
-    });
   }
 
   private calculateFee(
