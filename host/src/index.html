@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BIDV Shell Frontend</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' localhost:* *.howizbiz.com *.ldapudtest.com;
+        style-src 'self' localhost:* *.howizbiz.com *.ldapudtest.com 'unsafe-inline';
+        script-src 'self' localhost:* *.howizbiz.com *.ldapudtest.com 'unsafe-inline';
+        font-src 'self' data:;"
+    />
+  </head>
+  <body>
+    <bidv-app-root ngCspNonce="bidv-ef113ad24cf2203d6856bf68e8535dc2">
+      <div class="loader"></div>
+    </bidv-app-root>
+  </body>
+</html>

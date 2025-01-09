@@ -1,0 +1,33 @@
+<page-non-title-container [breadcrumbs]="breadcrumbs">
+  <step-component extraHeader (handlePrevStep)="onPreStep($event)" [currentStep]="4" />
+  <div class="step-content-detail-cus">
+    <div *ngIf="userInfoData" class="detai-cus-infomation-wrapper">
+      <bidv-svg class="detai-cus-infomation-wrapper_svg" [src]="is_cn? '$bidvPersonal':''"></bidv-svg>
+      <div class="detai-cus-infomation-wrapper_info">
+        <span class="bidv-text_headline-7">
+          CIF: {{userInfoData.acn}} - {{userInfoData.bocDesc}}
+        </span>
+        <div class="detai-cus-infomation-wrapper_badge">
+          <bidv-badge class="badge-green" iconLeft="bidvIconRibbonStar" shape="square">
+            {{userInfoData.ccode}}
+          </bidv-badge>
+          <bidv-badge iconLeft="bidvIconContactCard" appearance="gray" shape="square">
+            CCCD: {{userInfoData.oin}}
+          </bidv-badge>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <app-step-detail-customer-cn *ngIf="userInfoData" [title]="title" [data]="userInfoData" />
+
+    <!-- Step 4 - main card -->
+    <app-final-main-card *ngIf="mainCardData" [data]="mainCardData" />
+
+    <!-- Step 4 - sub card-->
+    <app-final-sub-card *ngIf="subCardData" [data]="subCardData" />
+
+    <!-- Step 4 - fee collection-->
+    <app-final-fee-collection *ngIf="feeCollectionData" [data]="feeCollectionData" />
+  </div>
+</page-non-title-container>

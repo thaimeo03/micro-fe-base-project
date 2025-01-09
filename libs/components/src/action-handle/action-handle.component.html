@@ -1,0 +1,50 @@
+<div class="bidv-action-handle">
+  <button
+    *ngIf="lastAction.length > 0"
+    bidvIconButton
+    iconLeft="bidvIconMoreVerticalOutline"
+    variant="outlined"
+    [bidvDropdown]="dropdownContent"
+    [bidvDropdownManual]="showMoreAction"
+    (bidvActiveZoneChange)="onActiveZone($event)"
+    (bidvObscured)="onObscured($event)"
+    (click)="onClick()"
+    size="s"
+  >
+    <ng-template #dropdownContent>
+      <bidv-data-list role="menu" class="bidv-list-action-handle">
+        <ng-container *ngFor="let item of lastAction">
+          <button
+            bidvOption
+            class="bidv-border-radius-small"
+            [disabled]="
+              !!loading ||
+              (!!defaultOptions && !!defaultOptions[item.hideKey]?.disabled) ||
+              loadingFetch
+            "
+            (click)="submitAction(item.code)"
+          >
+            {{ item.label }}
+          </button>
+        </ng-container>
+      </bidv-data-list>
+    </ng-template>
+  </button>
+  <ng-container *ngFor="let item of maxAction">
+    <button
+      bidvButton
+      [appearance]="item.appearance"
+      [disabled]="
+        (!!loading && loading !== item.code) ||
+        (!!defaultOptions && !!defaultOptions[item.hideKey]?.disabled) ||
+        loadingFetch
+      "
+      [loading]="loading === item.code"
+      [variant]="item.variant"
+      (click)="submitAction(item.code)"
+      size="s"
+    >
+      {{ item.label }}
+    </button>
+  </ng-container>
+</div>

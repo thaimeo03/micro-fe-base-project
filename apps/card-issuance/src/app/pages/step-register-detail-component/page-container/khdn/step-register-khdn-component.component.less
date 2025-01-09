@@ -1,0 +1,232 @@
+.card-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* Content styling */
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Left section */
+.card-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  //   gap: 0.5rem;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Right section */
+.card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  //   gap: 0.5rem;
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Input styling */
+input[type='radio'],
+input[type='checkbox'] {
+  accent-color: #007bff;
+}
+
+/*Icon card*/
+@keyframes spinCard {
+  0% {
+    transform: rotateY(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+
+  12% {
+    transform: rotateY(90deg) rotateZ(6deg) scale(1.7);
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+  }
+
+  25% {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+
+  62% {
+    transform: rotateY(270deg) rotateZ(-8deg) scale(1.7);
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+  }
+
+  80% {
+    transform: rotateY(720deg);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+
+  100% {
+    transform: rotateY(720deg);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+:host {
+  perspective: 50rem;
+}
+
+.logo {
+  background-color: #7c48c3;
+  background-image: linear-gradient(45deg, #c86dd7 0%, #3023ae 100%);
+  overflow: visible;
+  animation: spinCard 5s infinite;
+}
+
+.section {
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.title {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.icon-chevron {
+  transition: transform 0.3s ease;
+  transform: rotate(-90deg);
+}
+
+.icon-chevron.expanded {
+  transform: rotate(0deg);
+}
+
+.card-content-main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 9.6px 0;
+}
+
+.card-content-payment {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 9.6px 0;
+}
+
+.card-right-payment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+}
+
+.card-left-payment {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.info-annualFee {
+  position: relative;
+}
+
+.btn-info {
+  position: absolute;
+  bottom: 0;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 44px;
+}
+
+@media (max-width: 768px) {
+  .card-content {
+    flex-direction: column;
+  }
+
+  .card-right {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem 0 0 0;
+    gap: 16px;
+    border-left: none;
+  }
+}
+
+.receivice-place {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .select-place {
+    width: 320px;
+  }
+}
+
+.transactions-allowed {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 16px;
+}

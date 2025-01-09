@@ -1,0 +1,60 @@
+<page-non-title-container [breadcrumbs]="breadcrumbs">
+  <step-component extraHeader (handleNextStep)="onNextStep($event)" (handlePrevStep)="onPreStep($event)" [currentStep]="2"/>
+  <div class="container">
+    <div class="section">
+      <h3 class="title with-border">Đăng ký thẻ</h3>
+      <form [formGroup]="testForm" class="options-card">
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue1"
+            >Thẻ</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue2"
+            >Đăng ký dịch vụ mở tài khoản CA</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue3"
+            >Đăng ký dịch vụ SmartBanking</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue4"
+            >Đăng ký dịch vụ Vntopup</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue5"
+            >Đăng ký tài khoản định danh ALIAS</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue6"
+            >Đăng ký dịch vụ BSMS</bidv-checkbox-labeled
+          >
+        </div>
+        <div class="option">
+          <bidv-checkbox-labeled formControlName="testValue7"
+            >Đăng ký dịch vụ UNC tự động</bidv-checkbox-labeled
+          >
+        </div>
+      </form>
+    </div>
+    <div class="section">
+      <h3 class="title with-border">Đăng ký tài khoản định danh</h3>
+      <form [formGroup]="testForm1" class="options-account">
+        <div *ngFor="let group of packageGroups" class="column">
+          <bidv-radio-list
+            formControlName="selectedPackage"
+            [items]="group"
+            [itemContent]="radioContent"
+          ></bidv-radio-list>
+        </div>
+        <ng-template #radioContent let-data>
+          <span bidvTitle>{{ data.name }}</span>
+        </ng-template>
+      </form>
+    </div>
+  </div>
+</page-non-title-container>

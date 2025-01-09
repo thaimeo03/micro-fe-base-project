@@ -1,0 +1,155 @@
+/* You can add global styles to this file, and also import other style files */
+.page-non-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page-non-col {
+  flex: 1;
+  /* min-width: 48%; */
+  width: 100%;
+}
+
+.page-non-col-1 {
+  flex: 0 0 8.33%;
+  /* max-width: 8.33%; */
+  max-width: 6.33%;
+}
+.page-non-col-2 {
+  flex: 0 0 16.66%;
+  max-width: 16.66%;
+}
+.page-non-col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.page-non-col-4 {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+}
+.page-non-col-5 {
+  flex: 0 0 41.66%;
+  max-width: 41.66%;
+}
+.page-non-col-6 {
+  flex: 0 0 50%;
+  max-width: 49%;
+}
+.page-non-col-7 {
+  flex: 0 0 58.33%;
+  max-width: 58.33%;
+}
+.page-non-col-8 {
+  flex: 0 0 66.66%;
+  max-width: 66.66%;
+}
+.page-non-col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+.page-non-col-10 {
+  flex: 0 0 83.33%;
+  max-width: 83.33%;
+}
+.page-non-col-11 {
+  flex: 0 0 91.66%;
+  max-width: 91.66%;
+}
+.page-non-col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.page-non-table {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+
+  th {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+  }
+
+  td {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+
+  .col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  .row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+}
+
+.grid.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+span.required {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .page-non-col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,96 @@
+<form [formGroup]="subCardItemFormGroup" class="section sub-section">
+  <div class="section-header">
+    <div class="section-header_row">
+      <h3 class="title">Thông tin phát hành thẻ phụ #{{subCardItemIndex + 1}}</h3>
+      <bidv-icon icon="bidvIconMoreVerticalOutline" class="more-vertical-icon"></bidv-icon>
+    </div>
+
+    <bidv-icon (click)="removeSubCard()" icon="bidvIconDeleteOutline" class="delete-icon"></bidv-icon>
+  </div>
+  <div class="page-non-row">
+    <div class="page-non-col page-non-col-6">
+      <div class="grid grid-cols-12 gap-4">
+        <div class="col-span-6">
+          <label class="form-item">
+            <div class="bidv-text_title-1">CIF chủ thẻ phụ <span class="required">*</span></div>
+            <bidv-input formControlName="cifNumber">
+              Nhập số CIF
+              <input bidvTextfield type="number" />
+            </bidv-input>
+
+          </label>
+        </div>
+
+        <div class="col-span-6">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Tên KHCN sử dụng thẻ <span class="required">*</span></div>
+            <bidv-input formControlName="name" bidvHintContent="Tên in trên thẻ không được:
+                    Vượt quá 26 ký tự
+                    Chứa số và ký tự đặc biệt">
+              Nhập tên KHCN
+              <input bidvTextfield type="text" />
+            </bidv-input>
+          </label>
+        </div>
+
+        <div class="col-span-12">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Tài khoản chính liên kết thẻ <span class="required">*</span></div>
+            <bidv-select [bidvTextfieldCleaner]="true" formControlName="mainAcc" [bidvTextfieldLabelOutside]="true">
+              Tài khoản chính liên kết
+              <input bidvTextfield />
+              <bidv-data-list-wrapper *bidvDataList [items]="mainAcc" />
+            </bidv-select>
+          </label>
+        </div>
+
+        <div class="col-span-12">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Câu hỏi bảo mật <span class="required">*</span></div>
+            <bidv-select [bidvTextfieldCleaner]="true" formControlName="question" [bidvTextfieldLabelOutside]="true">
+              Câu hỏi bảo mật
+              <input bidvTextfield placeholder="Câu hỏi bảo mật" />
+              <bidv-data-list-wrapper *bidvDataList [items]="questions" />
+            </bidv-select>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="page-non-col page-non-col-6">
+      <div class="page-non-row">
+        <div class="page-non-col page-non-col-12">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Hình thức thẻ</div>
+            <div class="card-content-main">
+              <div class="card-left">
+                <bidv-radio-list [items]="cardForm" formControlName="cardType" [style.flex-direction]="'row'"
+                  [style.width]="'max-content'" />
+              </div>
+              <div class="card-right">
+                <bidv-checkbox-labeled formControlName="printPin">In PIN giấy cho thẻ</bidv-checkbox-labeled>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="page-non-col page-non-col-12">
+          <label class="form-item">
+            <div class="bidv-text_title-1">
+              Tài khoản phụ liên kết đến thẻ
+            </div>
+            <bidv-multi-select formControlName="subAcc">
+              <bidv-data-list-wrapper *bidvDataList bidvMultiSelectGroup [items]="subAccs"></bidv-data-list-wrapper>
+            </bidv-multi-select>
+          </label>
+        </div>
+
+        <div class="page-non-col page-non-col-12">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Trả lời câu hỏi bảo mật <span class="required">*</span></div>
+            <bidv-input-password formControlName="answer">Trả lời</bidv-input-password>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

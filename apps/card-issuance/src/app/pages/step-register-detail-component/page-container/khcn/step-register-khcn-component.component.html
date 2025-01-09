@@ -1,0 +1,38 @@
+<div class="card-box">
+  <div class="card-content">
+    <div class="card-left">
+      <bidv-thumbnail-card paymentSystem="mir" class="logo" size="l">
+        ****
+      </bidv-thumbnail-card>
+      <div class="card-details">
+        <span class="card-title">Chọn loại thẻ phát hành:</span>
+        <bidv-radio-list
+          [items]="strings"
+          [style.flex-direction]="'row'"
+          [style.width]="'max-content'"
+          [(ngModel)]="horizontal"
+        />
+      </div>
+    </div>
+    <div class="card-right">
+      <span class="card-title">Tài khoản liên kết:</span>
+      <div [formGroup]="formLinked">
+        <bidv-checkbox-labeled formControlName="linked">
+          Mở mới tại đề nghị này</bidv-checkbox-labeled
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-details-content">
+  <ng-container *ngIf="horizontal === 'Thẻ chính'">
+    <app-register-main-card></app-register-main-card>
+  </ng-container>
+  <ng-container *ngIf="horizontal === 'Thẻ phụ'">
+    <app-register-sub-card></app-register-sub-card>
+  </ng-container>
+  <ng-container *ngIf="horizontal === 'Thẻ chính kèm thẻ phụ'">
+    <app-register-main-and-sub-card></app-register-main-and-sub-card>
+  </ng-container>
+</div>

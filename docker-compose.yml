@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  server-client:
+    ports:
+      - 5001:80
+    build: .
+    working_dir: /usr/share/nginx/html/

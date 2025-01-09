@@ -1,0 +1,54 @@
+{
+  "header": {
+    "requestID": "123",
+    "errorcode": 123,
+    "errordesc": ""
+  },
+  "body": {
+    "processLogin": 1,
+    "functionInfo": {
+      "function": [
+        {
+          "functionCode": "TQ",
+          "functionID": "1",
+          "functionIcon": "bidvIconPieChart"
+        },
+        {
+          "functionCode": "connect",
+          "functionID": "3",
+          "functionIcon": "bidvIconCheck"
+        },
+        {
+          "functionCode": "TT",
+          "functionID": "5",
+          "functionIcon": "bidvIconReceiptAdd"
+        },
+        {
+          "functionCode": "work",
+          "functionID": "6",
+          "functionIcon": "bidvIconBriefcase"
+        },
+        {
+          "functionCode": "PL",
+          "functionID": "7",
+          "functionIcon": "bidvIconScales"
+        },
+        {
+          "functionCode": "service",
+          "functionID": "8",
+          "functionIcon": "bidvIconCalendarEdit"
+        },
+        {
+          "functionCode": "knowledge",
+          "functionID": "9",
+          "functionIcon": "bidvIconBook"
+        },
+        {
+          "functionCode": "person",
+          "functionID": "10",
+          "functionIcon": "bidvIconPerson"
+        }
+      ]
+    }
+  }
+}

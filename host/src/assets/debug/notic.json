@@ -1,0 +1,110 @@
+{
+  "header": {
+    "requestID": "125",
+    "errorcode": 125,
+    "errordesc": ""
+  },
+  "body": {
+    "processLogin": 1,
+    "functionInfo": {
+      "function": [
+        {
+          "functionID": "1",
+          "title": "Chuyển tiền",
+          "from": "191077685ACDS",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:20:20"
+        },
+        {
+          "functionID": "2",
+          "title": "Nạp tiền",
+          "from": "37594382FHTW",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:21:10"
+        },
+        {
+          "functionID": "3",
+          "title": "Rút tiền",
+          "from": "92847567XVNZ",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:22:30"
+        },
+        {
+          "functionID": "4",
+          "title": "Thanh toán hóa đơn",
+          "from": "52638194POIU",
+          "readed": true,
+          "date": "16/5/2024",
+          "time": "20:23:45"
+        },
+        {
+          "functionID": "5",
+          "title": "Kiểm tra số dư",
+          "from": "43872519LKJH",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:24:55"
+        },
+        {
+          "functionID": "6",
+          "title": "Chuyển khoản nội bộ",
+          "from": "83759461QWER",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:25:35"
+        },
+        {
+          "functionID": "7",
+          "title": "Chuyển khoản liên ngân hàng",
+          "from": "42987653TYUI",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:26:50"
+        },
+        {
+          "functionID": "8",
+          "title": "Mở tài khoản tiết kiệm",
+          "from": "19384756MNOP",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:27:20"
+        },
+        {
+          "functionID": "9",
+          "title": "Đóng tài khoản tiết kiệm",
+          "from": "84759631ZXCV",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:28:00"
+        },
+        {
+          "functionID": "10",
+          "title": "Quản lý thẻ tín dụng",
+          "from": "37598461GHJK",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:29:15"
+        },
+        {
+          "functionID": "11",
+          "title": "Đổi PIN",
+          "from": "19487652VBNC",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:30:05"
+        },
+        {
+          "functionID": "12",
+          "title": "Cập nhật thông tin cá nhân",
+          "from": "28374659QWOP",
+          "readed": false,
+          "date": "16/5/2024",
+          "time": "20:31:25"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.action-right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.step-content {
+  flex: 1;
+}
+
+:host ::ng-deep bidv-stepper.step-card-issuance[data-orientation="horizontal"] [bidvstep]._active .t-outline ._triangle {
+  display: none !important;
+}
+:host ::ng-deep bidv-divider._step-divider{
+  height: 36px;
+}
+
+.step-card-issuance_btn {
+  pointer-events: none;
+}
+

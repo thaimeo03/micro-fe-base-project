@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@admin/*": ["apps/admin/src/app/*"],
+      "@libs/components": ["libs/components/src/index.ts"],
+      "admin/Routes": ["apps/admin/src/app/remote-entry/entry.routes.ts"],
+      "card-issuance/Routes": [
+        "apps/card-issuance/src/app/remote-entry/entry.routes.ts"
+      ],
+      "remote-mfe/Routes": ["apps/mfe/src/app/remote-entry/entry.routes.ts"],
+      "store-feature-module": ["libs/store/feature-module/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

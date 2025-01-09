@@ -1,0 +1,17 @@
+<div class="bidv-page-container">
+  <div class="bidv-page-title-navigation-header">
+    <bidv-breadcrumbs *ngIf="breadcrumbs && breadcrumbs.length > 0">
+      <ng-container *ngFor="let item of breadcrumbs">
+        <a *bidvItem bidvLink [routerLink]="item.link">
+          {{ item.label }}
+        </a>
+      </ng-container>
+    </bidv-breadcrumbs>
+    <ng-content select="[extraHeader]"></ng-content>
+  </div>
+  <bidv-scrollbar class="_scroll">
+    <div class="bidv-page-body">
+      <ng-content></ng-content>
+    </div>
+  </bidv-scrollbar>
+</div>

@@ -1,0 +1,27 @@
+<div class="bidv-detail-card-info">
+  <div
+    class="title flex-8 space-between items-center"
+    (click)="toggle('1')"
+  >
+    <span class="bidv-text_headline-7">Danh sách định danh</span>
+  </div>
+  <bidv-divider *ngIf="expand1"/>
+  <bidv-expand [expanded]="expand1">
+    <div class="group-detail-info">
+      <div style="height: 300px; width: 100%;">
+        <base-table-with-api
+          class="identifier-table"
+          [colDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [gridOptions]="gridOptions"
+          [api]="apiList.bind(this)"
+          [params]="{cif:'0'}"
+          key="list-identifier"
+          [hidePagination]="true"
+        />
+      </div>
+    </div>
+  </bidv-expand>
+</div>
+
+

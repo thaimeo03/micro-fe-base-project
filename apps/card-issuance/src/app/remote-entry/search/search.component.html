@@ -1,0 +1,12 @@
+<div class="transaction-search-input" [formGroup]="searchForm">
+  <ng-container *transloco="let t">
+    <bidv-input
+      formControlName="search"
+      bidvTextfieldSize="m"
+      [bidvTextfieldCleaner]="true"
+      [bidvTextfieldLabelOutside]="true"
+    >
+      {{ t('translate.search') }}
+    </bidv-input>
+  </ng-container>
+</div>

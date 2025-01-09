@@ -1,0 +1,129 @@
+
+{
+  "userInfo": {
+      "userID": "149760",
+      "bdsCode": "71",
+      "brnCode": "071",
+      "email": "hieunt22@bidv.com.vn",
+      "fullName": "Nguyễn Trung Hiếu",
+      "deptCode": "BIDV0712101",
+      "deptName": "P. Quản trị ứng dụng",
+      "brnName": "TT CNTT (BITC) - BIDV",
+      "cra": "752",
+      "extendInfo": {
+          "sign_channel_active": "0",
+          "sign_channel": "NO_INFO",
+          "2fa": "0",
+          "brcd": "71000"
+      },
+      "qlnsbrnCode": "071"
+  },
+  "roleInfo": {
+      "role": [
+          {
+              "roleID": "17614",
+              "roleName": "GDV Khách hàng",
+              "roleCode": "GDV_GDKH",
+              "userLevel": "CN"
+          },
+          {
+              "roleID": "17615",
+              "roleName": "GDV Phòng giao dịch",
+              "roleCode": "GDV_PGD",
+              "userLevel": "CN"
+          },
+          {
+              "roleID": "17616",
+              "roleName": "KSV Khách hàng",
+              "roleCode": "KSV_GDKH",
+              "userLevel": "CN"
+          }
+      ]
+  },
+  "tellerInfo": {
+      "teller": [
+          {
+              "brnCode": "120",
+              "roleCode": "A1",
+              "roleName": "ADM 1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "122",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "502",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "121",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "168",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "560",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "620",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "709",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "741",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          },
+          {
+              "brnCode": "215",
+              "roleCode": "D1",
+              "tellerID": "149760"
+          }
+      ]
+  },
+  "functionInfo": {
+      "function": [
+          {
+              "functionCode": "THE",
+              "functionID": "THE",
+              "functionLink": "",
+              "functionName": "Thẻ",
+              "functionOrder": "0",
+              "grFunctionID": "THE",
+              "groupFunctionID": "",
+              "groupFunctionName": "",
+              "subFunction": "",
+              "roleCode": "null",
+              "subMenu": []
+          },
+          {
+              "functionCode": "DANGKIDICHVU",
+              "functionID": "DANGKIDICHVU",
+              "functionLink": "/card-issuance/issuance",
+              "functionName": "Đăng kí dịch vụ",
+              "functionOrder": "0",
+              "grFunctionID": "THE",
+              "groupFunctionID": "",
+              "groupFunctionName": "",
+              "subFunction": "",
+              "roleCode": "null",
+              "subMenu": []
+          }
+      ]
+  },
+  "apps": null
+}

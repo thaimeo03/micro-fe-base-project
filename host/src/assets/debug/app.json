@@ -1,0 +1,643 @@
+
+{
+  "apps": [
+      {
+          "appCode": "AGBK",
+          "appName": "Ngân hàng đại lý Agent Banking",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "AMRM",
+          "appName": "CHƯƠNG TRÌNH HỖ TRỢ TÁC NGHIỆP THEO LÔ",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "AMS",
+          "appName": "Hệ thống quản lý ứng dụng tập trung",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://ams.bidv.com.vn"
+      },
+      {
+          "appCode": "BCTC",
+          "appName": "Báo cáo tài chính",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "/BCTC"
+      },
+      {
+          "appCode": "BCTK_2020",
+          "appName": "Báo cáo thanh khoản nâng cấp 2020",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://10.53.19.112/BCTK2020/login.htm"
+      },
+      {
+          "appCode": "BCTK_NC",
+          "appName": "Bao cao thanh khoan nang cap",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDV MOBILE",
+          "appName": "BIDV MOBILE",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVAPI",
+          "appName": "BIDVAPI",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVIDM",
+          "appName": "He thong BIDV IDM",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVMGR",
+          "appName": "Quản lý Ứng dụng File",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVMMS",
+          "appName": "BIDVMMS",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVRUN",
+          "appName": "BIDVRUN",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDVTOKEN",
+          "appName": "Chương trình BIDV SMS TOKEN",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDV_NSNN",
+          "appName": "Phân bổ KQ Thu NSNN",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BIDV_QLTC_DVTV",
+          "appName": "Quản lý tài chính đơn vị thành viên",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "BONE",
+          "appName": "QL Nội bộ toàn hàng",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "CBGDNNSS",
+          "appName": "Cảnh báo các giao dịch nghi ngờ sai sót",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "CMSPREPAID",
+          "appName": "VNPAY PREPAID",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "."
+      },
+      {
+          "appCode": "CTLNH",
+          "appName": "Chuyển tiền NHANH liên ngân hàng 24/7 (IBFT)",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "CTT",
+          "appName": "Hệ thống thông tin trực tuyến ",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "DASHPLAN",
+          "appName": "Dashboard Cấu phần quản lý phân giao kế hoạch",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "DLSHL",
+          "appName": "Đo lường sự hài lòng",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "DPRRTD",
+          "appName": "CHƯƠNG TRÌNH TÍNH VÀ HẠCH TOÁN TRÍCH LẬP/HOÀN NHẬP DPRR TÍN DỤNG TỰ ĐỘNG",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "ESBAdmin",
+          "appName": "ESBAdmin",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "ESBAdminUAT",
+          "appName": "ESBAdminUAT",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "FIRM_BANKING",
+          "appName": "Firm Banking",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "FTPNEW",
+          "appName": "Chương trình xác định giá FTP mới 2018",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "FXRT",
+          "appName": "Cập nhật tỷ giá tự động",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "IBANK",
+          "appName": "Internet Banking dành cho khách hàng tổ chức",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "IMAP",
+          "appName": "Xử lý điện đến tự động",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "KMTT",
+          "appName": "QUẢN LÝ KHUYẾN MẠI TẬP TRUNG",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "KPIQTTD",
+          "appName": "Thống kê giao dịch cán bộ quản trị tín dụng - phần giải ngân, thu nợ",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://10.53.21.237:10039/KPIQTTD/login.htm"
+      },
+      {
+          "appCode": "LGTTKH",
+          "appName": "Làm giàu thông tin khách hàng",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "LKKHT",
+          "appName": "Quản lý liên kết các kênh hỗ trợ",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "LUONGBIDV",
+          "appName": "Tính toán và quản lý dữ liệu lương, thu nhập tập trung",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "http://10.53.3.40:9080/LUONGBIDV/"
+      },
+      {
+          "appCode": "MBNT",
+          "appName": "Quản lý mua bán ngoại tệ",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "MFE-SHELL",
+          "appName": "MFE-SHELL",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "MOBILEAPP",
+          "appName": "Ứng dụng trên thiết bị di động dành cho KHCN – BIDV Lifestyle",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "MONITORING",
+          "appName": "Hỗ trợ công tác vận hành theo dõi",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "MPAY",
+          "appName": "BIDV Pay+",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "http://10.53.252.92/mm/#!/"
+      },
+      {
+          "appCode": "NEW_H2H",
+          "appName": "BIDV H2H - CIC",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "http://10.53.19.112/bidv-h2h/login"
+      },
+      {
+          "appCode": "NLTCTT",
+          "appName": "Nhập liệu thủ công tập trung",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "."
+      },
+      {
+          "appCode": "NLTCTTTDBL",
+          "appName": "Quản trị rủi ro và giám sát tuân thủ trong hoạt động tín dụng bán lẻ",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NLTCTT_CAR",
+          "appName": "NLTCTT_CAR",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NLTCTT_GSKHNB",
+          "appName": "CHƯƠNG TRÌNH GIÁM SÁT KẾ HOẠCH",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NLTCTT_KONDOR",
+          "appName": "CHƯƠNG TRÌNH HỖ TRỢ CẬP NHẬT DỮ LIỆU TỰ ĐỘNG LÊN KONDOR",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NLTCTT_SM_REPORT",
+          "appName": "Báo cáo quản trị điều hành chiến lược",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NLTCTT_TDBL",
+          "appName": "NLTCTT - Quản trị rủi ro và giám sát tuân thủ trong hoạt động tín dụng bán lẻ",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "NNNT",
+          "appName": "Quản lý cho vay nông nghiệp nông thôn",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://bidvapp.bidv.com.vn"
+      },
+      {
+          "appCode": "ODA",
+          "appName": "Quản lý dự án nguồn vốn ủy thác quốc tế",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "PCB",
+          "appName": "Hệ thống thông tin tín dụng cho PCB",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "PLN",
+          "appName": "Hệ thống phân loại nợ, tính trích DPRR",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLACVL",
+          "appName": "Quản lý ấn chỉ vật liệu",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLCSDLSIBS",
+          "appName": "Quản lý cập nhật dữ liệu SIBS",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLDTBH",
+          "appName": "Quản lý doanh thu bảo hiểm BIC",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLGNTN",
+          "appName": "Quản lý giải ngân thu nợ",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLGNTN2",
+          "appName": "Quản lý giải ngân thu nợ - nâng cấp",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLHDDT",
+          "appName": "Quản lý hóa đơn điện tử",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLHDVAT2016",
+          "appName": "Quan ly hoa don doanh nghiep 2016",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLHM2",
+          "appName": "Quản lý hạn mức mới",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLLCHS",
+          "appName": "Quản lý luân chuyển hồ sơ",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "/QLLCHS"
+      },
+      {
+          "appCode": "QLLHK",
+          "appName": "Quản lý lỗi tác nghiệp",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLLS_DK063",
+          "appName": "Quản lý lãi suất",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLRRTN3",
+          "appName": "Quản lý và giám sát rủi ro hoạt động",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "10.53.3.150"
+      },
+      {
+          "appCode": "QLTGDMBDS",
+          "appName": "Quan ly thoi gian dong mo BDS",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": " "
+      },
+      {
+          "appCode": "QLTKTG",
+          "appName": "Quản lý tài khoản trung gian",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QLTOKENAPP",
+          "appName": "Quản lý tokenapp",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "QLTOKENAPP"
+      },
+      {
+          "appCode": "QLTSTCCC",
+          "appName": "Quản lý tài sản cầm cố thế chấp",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QL_KENHTRUYEN",
+          "appName": "Quản lý kênh truyền và hợp đồng thanh toán hóa đơn",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QTDKDVTTTQ",
+          "appName": "Quản trị đăng ký dịch vụ tập chung tại quầy ",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "QTDVNHDT",
+          "appName": "Đăng ký dịch vụ ngân hàng điện tử",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "REMOTE5",
+          "appName": "REMOTE5",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "REMOTE5-SIT",
+          "appName": "REMOTE5-SIT",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "REMOTE5-UAT",
+          "appName": "REMOTE5-UAT",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "RMS",
+          "appName": "Hệ thống quản trị rủi ro",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "RMS"
+      },
+      {
+          "appCode": "ROUTING",
+          "appName": "ACH ROUTING",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "http://10.53.21.95:9099/portal-routing"
+      },
+      {
+          "appCode": "RRLS",
+          "appName": "Quản lý rủi ro lãi suất",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "RRLS_2020",
+          "appName": "Rủi ro lãi suất nâng cấp 2020",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://10.53.253.90:10039/wps/portal/"
+      },
+      {
+          "appCode": "RsalePro",
+          "appName": "Ứng dụng trên thiết bị di động dành cho KHTC",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "SMT",
+          "appName": "Smart Teller",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "SPBHXH",
+          "appName": "BHXH",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "SSOAdmin",
+          "appName": "SSOAdmin",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "SVS_NEW",
+          "appName": "Mẫu dấu - chữ ký - 2024",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://svs-dev.apps.devttptnhs.ldapudtest.com"
+      },
+      {
+          "appCode": "TCC",
+          "appName": "Tài chính công",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "TCHDT",
+          "appName": "THCH",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": " "
+      },
+      {
+          "appCode": "TDBL",
+          "appName": "Hỗ trợ tác nghiệp nghiệp vụ tín dụng bán lẻ",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": "http://10.53.252.15/BIDVTDBL"
+      },
+      {
+          "appCode": "TDPS2",
+          "appName": "Chương trình tín dụng phái sinh mới",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "TDS",
+          "appName": "Thưởng doanh số",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://10.53.19.112/TDS/login"
+      },
+      {
+          "appCode": "TFONLINE",
+          "appName": "Hỗ trợ kiểm tra chứng từ tài trợ thương mại trực tuyến",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "TFREPORT",
+          "appName": "Báo Cáo Giao Dịch Tài Trợ Thương Mại",
+          "appType": "3",
+          "appStatus": "1",
+          "appLink": " "
+      },
+      {
+          "appCode": "TMTT",
+          "appName": "Quản lý tiền mặt tập trung",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://bidvapp.bidv.com.vn/QLTMTT"
+      },
+      {
+          "appCode": "TOKENWAS",
+          "appName": "TOKENWAS",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "TOPO",
+          "appName": "Quản lý thông tin hạ tầng và ứng dụng",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://10.53.3.250:8080/Project"
+      },
+      {
+          "appCode": "TPTH",
+          "appName": "Thu phí tích hợp",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "TTHDOL",
+          "appName": "Thanh toán hóa đơn Online",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "10.53.41.104"
+      },
+      {
+          "appCode": "TTSPKB",
+          "appName": "Chương trình thanh toán song phương tập trung với KBNN",
+          "appType": "2",
+          "appStatus": "1",
+          "appLink": "http://qludtt.bidv.com.vn/wps/portal"
+      },
+      {
+          "appCode": "TUYENDUNG",
+          "appName": "Phần mềm tuyển dụng BIDV",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "UDTQ",
+          "appName": "Ung dung tai quay",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "VHTT",
+          "appName": "Vận hành tập trung",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "VRRTT",
+          "appName": "Tính vốn yêu cầu cho rủi ro thị trường",
+          "appType": "3",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "covid",
+          "appName": "Quản lý các khoản vay cơ cấu lại thời hạn trả nợ, miễn giảm lãi phí, giữ nguyên nhóm nợ theo TT01",
+          "appType": "2",
+          "appStatus": "1"
+      },
+      {
+          "appCode": "qlnvt",
+          "appName": "Quản lý Nghiệp vụ thẻ",
+          "appType": "2",
+          "appStatus": "1"
+      }
+  ]
+}

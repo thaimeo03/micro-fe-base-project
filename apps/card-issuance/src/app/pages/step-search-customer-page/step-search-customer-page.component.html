@@ -1,0 +1,10 @@
+<page-non-title-container [breadcrumbs]="breadcrumbs">
+  <step-component extraHeader (handleNextStep)="onNextStep($event)" (handlePrevStep)="onPreStep($event)" [currentStep]="0"/>
+  <div class="step-content-search">
+    <span class="bidv-text_headline-7 _title">Tìm kiếm khách hàng</span>
+    <bidv-divider class="_divider-search-cus"/>
+    <div class="_table">
+      <bidv-list-customer (rowClick)="onRowClick($event)" />
+    </div>
+  </div>
+</page-non-title-container>

@@ -1,0 +1,174 @@
+<!-- Thẻ chính -->
+<form [formGroup]="formMainCard">
+  <div class="section">
+    <div class="section-header">
+      <h3 class="title">Phát hành thẻ chính</h3>
+      <bidv-icon icon="bidvIconChevronDown" (click)="toggleMainCard()" class="icon-chevron"
+        [class.expanded]="expandedMainCard"></bidv-icon>
+    </div>
+    <bidv-expand [expanded]="expandedMainCard">
+      <ng-template bidvExpandContent>
+        <div class="page-non-row">
+          <div class="page-non-col page-non-col-6">
+            <div class="page-non-row">
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Loại thẻ phát hành</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="cardType"
+                    [bidvTextfieldLabelOutside]="true">
+                    Loại thẻ phát hành
+                    <input bidvTextfield placeholder="Chọn loại thẻ" />
+                    <bidv-data-list-wrapper *bidvDataList [items]="typeCard" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Mã sản phẩm</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="productCode"
+                    [bidvTextfieldLabelOutside]="true">
+                    Mã sản phẩm
+                    <input bidvTextfield placeholder="Chọn mã sản phẩm" />
+                    <bidv-data-list-wrapper *bidvDataList [items]="productCode" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Tên in trên thẻ</div>
+                  <bidv-input formControlName="name" bidvHintContent="Tên in trên thẻ không được:
+                    Vượt quá 26 ký tự
+                    Chứa số và ký tự đặc biệt">
+                    <input bidvTextfield type="text" />
+                  </bidv-input>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Nhóm khách hàng thẻ</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="cardCusGr"
+                    [bidvTextfieldLabelOutside]="true">
+                    Nhóm khách hàng thẻ
+                    <input bidvTextfield placeholder="Chọn nhóm" />
+                    <bidv-data-list-wrapper *bidvDataList [items]="cardCusGr" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-12">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Tài khoản chính liên kết</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="mainAcc"
+                    [bidvTextfieldLabelOutside]="true">
+                    Tài khoản chính liên kết
+                    <input bidvTextfield />
+                    <bidv-data-list-wrapper *bidvDataList [items]="mainAcc" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Câu hỏi bảo mật</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="question"
+                    [bidvTextfieldLabelOutside]="true">
+                    Câu hỏi bảo mật
+                    <input bidvTextfield placeholder="Câu hỏi" />
+                    <bidv-data-list-wrapper *bidvDataList [items]="questions" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Trả lời câu hỏi bảo mật</div>
+                  <bidv-input-password formControlName="answer">Nhập kết quả</bidv-input-password>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="page-non-col page-non-col-6">
+            <div class="page-non-row">
+              <div class="page-non-col page-non-col-12">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Hình thức thẻ</div>
+                  <div class="card-content-main">
+                    <div class="card-left">
+                      <bidv-radio-list [items]="cardForm" formControlName="cardForm" [style.flex-direction]="'row'"
+                        [style.width]="'max-content'" />
+                    </div>
+                    <div class="card-right">
+                      <bidv-checkbox-labeled formControlName="printPin">In PIN giấy cho thẻ</bidv-checkbox-labeled>
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-11">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">
+                    Phí thường niên & đặc quyền
+                  </div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="annualFee"
+                    [bidvTextfieldLabelOutside]="true">
+                    Phí
+                    <input bidvTextfield placeholder="Câu hỏi" />
+                    <bidv-data-list-wrapper *bidvDataList [items]="annualFees" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-1 info-annualFee">
+                <button bidvIconButton icon="bidvIconInfoOutline" appearance="gray" size="s" variant="outlined"
+                  class="btn-info" bidvHintContent="Tên in trên thẻ không được:
+                    Vượt quá 26 ký tự
+                    Chứa số và ký tự đặc biệt">
+                </button>
+              </div>
+
+              <div class="page-non-col page-non-col-12">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">
+                    Tài khoản phụ liên kết đến thẻ
+                  </div>
+                  <bidv-multi-select formControlName="subAcc">
+                    <bidv-data-list-wrapper *bidvDataList bidvMultiSelectGroup
+                      [items]="subAccs"></bidv-data-list-wrapper>
+                  </bidv-multi-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">CB giới thiệu</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="staff" [bidvTextfieldLabelOutside]="true">
+                    CB giới thiệu
+                    <input bidvTextfield />
+                    <bidv-data-list-wrapper *bidvDataList [items]="staffId" />
+                  </bidv-select>
+                </label>
+              </div>
+
+              <div class="page-non-col page-non-col-6">
+                <label class="form-item">
+                  <div class="bidv-text_title-1">Mã AM quản lý</div>
+                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="staff" [bidvTextfieldLabelOutside]="true">
+                    Mã AM quản lý
+                    <input bidvTextfield />
+                    <bidv-data-list-wrapper *bidvDataList [items]="staffId" />
+                  </bidv-select>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </bidv-expand>
+  </div>
+
+  <!-- Thu phí -->
+  <app-fee-collection *ngIf="showFeeCollection"></app-fee-collection>
+</form>

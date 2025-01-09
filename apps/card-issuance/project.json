@@ -1,0 +1,108 @@
+{
+  "name": "card-issuance",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/card-issuance/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/card-issuance",
+        "index": "apps/card-issuance/src/index.html",
+        "main": "apps/card-issuance/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/card-issuance/tsconfig.app.json",
+        "assets": [
+          "apps/card-issuance/src/favicon.ico",
+          "apps/card-issuance/src/assets"
+        ],
+        "styles": ["apps/card-issuance/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/card-issuance/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/card-issuance/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4305,
+        "publicHost": "http://localhost:4305"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "card-issuance:build:production"
+        },
+        "development": {
+          "browserTarget": "card-issuance:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "card-issuance:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/card-issuance/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "card-issuance:build",
+        "port": 4305,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "card-issuance:build:development"
+        },
+        "production": {
+          "buildTarget": "card-issuance:build:production"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    // width: 100% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.with-border {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.options-card {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    gap: 10px 40px;
+    margin-top: 10px;
+}
+
+.options-account {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .options-account ::ng-deep .radio-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .options-account ::ng-deep .radio-item:hover {
+    background-color: #f9f9f9;
+    border-color: #007bff;
+  }
+  
+  .options-account ::ng-deep input[type='radio'] {
+    margin-right: 1rem;
+    accent-color: #007bff;
+  }
+  
+  .options-account ::ng-deep span[bidvTitle] {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+
+.option {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox,
+.radio {
+    margin-right: 10px;
+}
+
+.label {
+    font-size: 1em;
+}

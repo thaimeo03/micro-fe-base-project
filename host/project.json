@@ -1,0 +1,121 @@
+{
+  "name": "host",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "bidv-app",
+  "sourceRoot": "host/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/host",
+        "index": "host/src/index.html",
+        "main": "host/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "host/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "host/src/favicon.ico",
+          "host/src/assets",
+          {
+            "input": "apps/admin/src/assets",
+            "glob": "**/*",
+            "output": "./admin/assets"
+          },
+          {
+            "input": "node_modules/@bidv-auth/layout/assets",
+            "glob": "**/*",
+            "output": "./assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@bidv-ui/icons/src",
+            "output": "assets/bidv-ui/icons"
+          }
+        ],
+        "styles": [
+          "node_modules/@bidv-auth/cdk/src/loading.css",
+          "node_modules/@bidv-ui/core/styles/bidv-ui-theme.less",
+          "node_modules/@bidv-ui/core/styles/bidv-ui-fonts.less",
+          "node_modules/@bidv-ui/styles/bidv-ui-global.less",
+          "host/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "host/webpack.config.ts"
+        },
+        "allowedCommonJsDependencies": [
+          "base64-js",
+          "js-sha256"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "host/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:module-federation-dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "host/proxy.conf.json",
+        "publicHost": "http://localhost:4300"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "host:build:production"
+        },
+        "development": {
+          "buildTarget": "host:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "host:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "host": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node ./scripts/host.ts"
+      }
+    }
+  }
+}

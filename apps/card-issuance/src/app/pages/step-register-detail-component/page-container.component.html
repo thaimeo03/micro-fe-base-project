@@ -1,0 +1,8 @@
+<page-non-title-container [breadcrumbs]="breadcrumbs">
+  <step-component extraHeader (handleNextStep)="onNextStep($event)" (handlePrevStep)="onPreStep($event)"
+    [currentStep]="3" />
+  <div class="step-content">
+    <app-step-register-khcn-component></app-step-register-khcn-component>
+    <!-- <app-step-register-khdn-component></app-step-register-khdn-component> -->
+  </div>
+</page-non-title-container>

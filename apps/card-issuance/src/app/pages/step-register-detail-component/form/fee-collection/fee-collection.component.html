@@ -1,0 +1,73 @@
+<form [formGroup]="feeCollectionForm">
+  <!-- Thu phí -->
+  <div class="section">
+    <div class="section-header">
+      <h3 class="title">Thu phí</h3>
+      <bidv-icon icon="bidvIconChevronDown" (click)="toggleFeeCollection()" class="icon-chevron"
+        [class.expanded]="expandedFeeCollection"></bidv-icon>
+    </div>
+    <bidv-expand [expanded]="expandedFeeCollection">
+      <ng-template bidvExpandContent>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="col-span-1">
+            <label class="form-item">
+              <div class="bidv-text_title-1">Hình thức thanh toán phí <span class="required">*</span></div>
+              <bidv-select [bidvTextfieldCleaner]="true" formControlName="typeFee" [bidvTextfieldLabelOutside]="true">
+                Hình thức thanh toán
+                <bidv-data-list-wrapper *bidvDataList [items]="feeType" />
+              </bidv-select>
+            </label>
+          </div>
+
+          <div class="col-span-1">
+            <label class="form-item">
+              <div class="bidv-text_title-1">Phí phát hành thẻ chính <span class="required">*</span></div>
+              <bidv-input-number [bidvTextfieldCleaner]="true" formControlName="mainCardFee">
+                Nhập thông tin
+              </bidv-input-number>
+            </label>
+          </div>
+
+          <div class="col-span-1">
+            <label class="form-item">
+              <div class="bidv-text_title-1">Phí phát hành thẻ phụ <span class="required">*</span></div>
+              <bidv-input-number [bidvTextfieldCleaner]="true" formControlName="subCardFee">
+                Nhập thông tin
+              </bidv-input-number>
+            </label>
+          </div>
+
+          <div class="col-span-1">
+            <label class="form-item">
+              <div class="bidv-text_title-1">Phí trả về địa chỉ KH <span class="required">*</span></div>
+              <bidv-input-number [bidvTextfieldCleaner]="true" formControlName="addressFee">Nhập thông
+                tin</bidv-input-number>
+            </label>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label class="form-item">
+            <div class="bidv-text_title-1">Tài khoản thu phí <span class="required">*</span></div>
+          </label>
+          <bidv-select [bidvTextfieldCleaner]="true" formControlName="accountFee" [bidvTextfieldLabelOutside]="true">
+            Chọn tài khoản
+            <bidv-data-list-wrapper *bidvDataList [items]="feeAccount" />
+          </bidv-select>
+        </div>
+
+        <div class="mt-4 grid grid-cols-3">
+          <div class="col-span-1">
+            <div>Tổng phí (VND):<span class="fee-value">{{totalFee}}</span></div>
+          </div>
+          <div class="col-span-1">
+            <div>Tổng VAT (VND):<span class="fee-value">{{VATFee}}</span></div>
+          </div>
+          <div class="col-span-1">
+            <div>Tổng thu (VND):<span class="fee-value">{{revenueFee}}</span></div>
+          </div>
+        </div>
+      </ng-template>
+    </bidv-expand>
+  </div>
+</form>
