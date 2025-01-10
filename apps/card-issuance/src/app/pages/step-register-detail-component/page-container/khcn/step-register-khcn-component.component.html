@@ -6,20 +6,15 @@
       </bidv-thumbnail-card>
       <div class="card-details">
         <span class="card-title">Chọn loại thẻ phát hành:</span>
-        <bidv-radio-list
-          [items]="strings"
-          [style.flex-direction]="'row'"
-          [style.width]="'max-content'"
-          [(ngModel)]="horizontal"
-        />
+        <bidv-radio-list [items]="strings" [style.flex-direction]="'row'" [style.width]="'max-content'"
+          [ngModel]="horizontal" (ngModelChange)="changeHorizontal($event)" />
       </div>
     </div>
     <div class="card-right">
       <span class="card-title">Tài khoản liên kết:</span>
       <div [formGroup]="formLinked">
         <bidv-checkbox-labeled formControlName="linked">
-          Mở mới tại đề nghị này</bidv-checkbox-labeled
-        >
+          Mở mới tại đề nghị này</bidv-checkbox-labeled>
       </div>
     </div>
   </div>

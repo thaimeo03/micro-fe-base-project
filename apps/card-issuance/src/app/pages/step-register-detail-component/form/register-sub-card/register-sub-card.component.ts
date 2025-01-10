@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -38,7 +38,7 @@ import {
   BidvStringifyContentPipeModule,
 } from '@bidv-ui/kit';
 import { SubCardItemComponent } from './sub-card-item/sub-card-item.component';
-import { IssuanceServices } from '../../../../services/issuance.service';
+import { IssuanceFormServices } from '../../../../services/issuance-form.service';
 
 interface SelectItem {
   label: string;
@@ -80,7 +80,7 @@ interface SelectItem {
 })
 export class RegisterSubCardComponent {
   private fb = inject(FormBuilder);
-  private issuanceServices = inject(IssuanceServices);
+  private issuanceFormServices = inject(IssuanceFormServices);
 
   @Input()
   showFeeCollection = true;
@@ -202,10 +202,10 @@ export class RegisterSubCardComponent {
   }
 
   initializeForm() {
-    if (this.issuanceServices.formSubCard)
-      return this.issuanceServices.formSubCard;
+    if (this.issuanceFormServices.formSubCard)
+      return this.issuanceFormServices.formSubCard;
 
-    return this.issuanceServices.setFormSubCard({
+    return this.issuanceFormServices.setFormSubCard({
       subCardItemForms: this.fb.array([this.getSubCardItemGroup()]),
       transactionOffice: new FormControl(this.transactionOffice[0]),
       placeRec: new FormControl(this.placeReceivice[0]),

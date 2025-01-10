@@ -40,7 +40,6 @@ import { IssuanceServices } from '../../../services/issuance.service';
 })
 export class DetailCustommerCnComponent implements OnInit {
   router = inject(Router);
-  issuanceService = inject(IssuanceServices);
 
   @Input({ required: true }) title!: string;
   @Input({ required: true }) data!: any;
@@ -168,7 +167,6 @@ export class DetailCustommerCnComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = this.formatUserInfoData();
-    this.issuanceService.updateStepData('step-2', this.data);
   }
 
   formatUserInfoData() {

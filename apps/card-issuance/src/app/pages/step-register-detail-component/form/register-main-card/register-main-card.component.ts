@@ -4,7 +4,6 @@ import {
   Component,
   inject,
   Input,
-  OnInit,
 } from '@angular/core';
 import {
   FormControl,
@@ -39,7 +38,7 @@ import {
   BidvMultiSelectModule,
 } from '@bidv-ui/kit';
 import { FeeCollectionComponent } from '../fee-collection/fee-collection.component';
-import { IssuanceServices } from '../../../../services/issuance.service';
+import { IssuanceFormServices } from '../../../../services/issuance-form.service';
 
 interface SelectItem {
   label: string;
@@ -83,7 +82,7 @@ interface SelectItem {
   ],
 })
 export class RegisterMainCardComponent {
-  private issuanceServices = inject(IssuanceServices);
+  private issuanceFormServices = inject(IssuanceFormServices);
 
   @Input()
   showFeeCollection = true;
@@ -153,10 +152,10 @@ export class RegisterMainCardComponent {
   }
 
   initializeForm(): FormGroup {
-    if (this.issuanceServices.formMainCard)
-      return this.issuanceServices.formMainCard;
+    if (this.issuanceFormServices.formMainCard)
+      return this.issuanceFormServices.formMainCard;
 
-    return this.issuanceServices.setFormMainCard({
+    return this.issuanceFormServices.setFormMainCard({
       cardType: new FormControl(this.typeCard[0]),
       productCode: new FormControl(this.productCode[0]),
       name: new FormControl('', [

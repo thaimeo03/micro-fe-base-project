@@ -30,7 +30,7 @@ import {
   BidvInputPasswordModule,
   BidvMultiSelectModule,
 } from '@bidv-ui/kit';
-import { IssuanceServices } from '../../../../services/issuance.service';
+import { IssuanceFormServices } from '../../../../services/issuance-form.service';
 
 @Component({
   standalone: true,
@@ -62,7 +62,7 @@ import { IssuanceServices } from '../../../../services/issuance.service';
   styleUrls: ['./fee-collection.component.less'],
 })
 export class FeeCollectionComponent implements OnInit {
-  private issuanceServices = inject(IssuanceServices);
+  private issuanceFormService = inject(IssuanceFormServices);
 
   feeType = [
     { label: 'Hình thức thanh toán phí 1', value: 1 },
@@ -82,26 +82,31 @@ export class FeeCollectionComponent implements OnInit {
     this.feeCollectionForm = this.initializeForm();
   }
 
-  private VAT = 10;
   totalFee = 0;
   VATFee = 0;
   revenueFee = 0;
 
   initializeForm() {
-    if (this.issuanceServices.feeCollectionForm) {
-      this.totalFee = this.issuanceServices.feeCollectionForm.value.totalFee;
-      this.VATFee = this.issuanceServices.feeCollectionForm.value.VATFee;
-      this.revenueFee =
-        this.issuanceServices.feeCollectionForm.value.revenueFee;
-      return this.issuanceServices.feeCollectionForm;
+    if (this.issuanceFormService.feeCollectionForm) {
+      const { mainCardFee, subCardFee, addressFee } =
+        this.issuanceFormService.feeCollectionForm.value;
+      const { totalFee, VATFee, revenueFee } =
+        this.issuanceFormService.calculateFee(
+          mainCardFee,
+          subCardFee,
+          addressFee,
+        );
+      this.setFeeValues(totalFee, VATFee, revenueFee);
+
+      return this.issuanceFormService.feeCollectionForm;
     }
 
-    return this.issuanceServices.setFeeCollectionForm({
+    return this.issuanceFormService.setFeeCollectionForm({
       typeFee: new FormControl(this.feeType[0], Validators.required),
       mainCardFee: new FormControl(0, Validators.required),
       subCardFee: new FormControl(0, Validators.required),
       addressFee: new FormControl(0, Validators.required),
-      accountFee: new FormControl(null),
+      accountFee: new FormControl(null, Validators.required),
     });
   }
 
@@ -111,63 +116,40 @@ export class FeeCollectionComponent implements OnInit {
       .get('mainCardFee')
       ?.valueChanges.subscribe((value) => {
         const [_, subCardFeeValue, addressFeeValue] = this.getFeeValues();
-        this.calculateFee(value, subCardFeeValue, addressFeeValue);
+        const { totalFee, VATFee, revenueFee } =
+          this.issuanceFormService.calculateFee(
+            value,
+            subCardFeeValue,
+            addressFeeValue,
+          );
+        this.setFeeValues(totalFee, VATFee, revenueFee);
       });
 
     this.feeCollectionForm
       .get('subCardFee')
       ?.valueChanges.subscribe((value) => {
         const [mainCardFeeValue, _, addressFeeValue] = this.getFeeValues();
-        this.calculateFee(mainCardFeeValue, value, addressFeeValue);
+        const { totalFee, VATFee, revenueFee } =
+          this.issuanceFormService.calculateFee(
+            mainCardFeeValue,
+            value,
+            addressFeeValue,
+          );
+        this.setFeeValues(totalFee, VATFee, revenueFee);
       });
 
     this.feeCollectionForm
       .get('addressFee')
       ?.valueChanges.subscribe((value) => {
         const [mainCardFeeValue, subCardFeeValue, _] = this.getFeeValues();
-        this.calculateFee(mainCardFeeValue, subCardFeeValue, value);
+        const { totalFee, VATFee, revenueFee } =
+          this.issuanceFormService.calculateFee(
+            mainCardFeeValue,
+            subCardFeeValue,
+            value,
+          );
+        this.setFeeValues(totalFee, VATFee, revenueFee);
       });
-  }
-
-  private calculateFee(
-    mainCardFeeValue: number | null | undefined,
-    subCardFeeValue: number | null | undefined,
-    addressFeeValue: number | null | undefined,
-  ) {
-    if (
-      typeof mainCardFeeValue === 'number' &&
-      typeof subCardFeeValue === 'number' &&
-      typeof addressFeeValue === 'number'
-    ) {
-      this.totalFee = this.calculateTotalFee(
-        mainCardFeeValue,
-        subCardFeeValue,
-        addressFeeValue,
-      );
-      this.VATFee = this.calculateVATFee();
-      this.revenueFee = this.totalFee + this.VATFee;
-      this.revenueFee = this.calculateRevenueFee();
-    } else {
-      this.totalFee = 0;
-      this.VATFee = 0;
-      this.revenueFee = 0;
-    }
-  }
-
-  private calculateTotalFee(
-    mainCardFeeValue: number,
-    subCardFeeValue: number,
-    addressFeeValue: number,
-  ) {
-    return mainCardFeeValue + subCardFeeValue + addressFeeValue;
-  }
-
-  private calculateVATFee() {
-    return this.totalFee * (this.VAT / 100);
-  }
-
-  private calculateRevenueFee() {
-    return this.totalFee + this.VATFee;
   }
 
   private getFeeValues() {
@@ -176,6 +158,12 @@ export class FeeCollectionComponent implements OnInit {
     const addressFeeValue = this.feeCollectionForm.value.addressFee;
 
     return [mainCardFeeValue, subCardFeeValue, addressFeeValue];
+  }
+
+  private setFeeValues(totalFee: number, VATFee: number, revenueFee: number) {
+    this.totalFee = totalFee;
+    this.VATFee = VATFee;
+    this.revenueFee = revenueFee;
   }
 
   protected expandedFeeCollection = true;

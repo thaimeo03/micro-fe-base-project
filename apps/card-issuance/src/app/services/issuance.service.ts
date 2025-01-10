@@ -1,23 +1,11 @@
 import { inject, Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClientBuilder } from '@bidv-auth/cdk';
-import { BehaviorSubject } from 'rxjs';
-
-type StepKey = 'step-2' | 'step-4-main' | 'step-4-sub' | 'step-4-fee';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IssuanceServices {
   readonly #httpClient = inject(HttpClientBuilder);
-  private fb = inject(FormBuilder);
-  private stepData = new BehaviorSubject<Record<StepKey, any>>({
-    'step-2': null,
-    'step-4-main': null,
-    'step-4-sub': null,
-    'step-4-fee': null,
-  });
-  stepData$ = this.stepData.asObservable();
 
   private fakedStep2Data = {
     acn: '85082',
@@ -118,35 +106,6 @@ export class IssuanceServices {
     zusreltyp: '10003',
     zusreltypDesc: 'C-KO CO DH MY-TUAN THU',
   };
-
-  formMainCard!: FormGroup;
-  formSubCard!: FormGroup;
-  feeCollectionForm!: FormGroup;
-
-  // Test use forms in service
-  setFormMainCard(values: any) {
-    this.formMainCard = this.fb.group(values);
-    return this.formMainCard;
-  }
-
-  setFormSubCard(values: any) {
-    this.formSubCard = this.fb.group(values);
-    return this.formSubCard;
-  }
-
-  setFeeCollectionForm(values: any) {
-    this.feeCollectionForm = this.fb.group(values);
-    return this.feeCollectionForm;
-  }
-
-  updateStepData(step: StepKey, data: any) {
-    const curData = this.stepData.getValue();
-    this.stepData.next({ ...curData, [step]: data });
-  }
-
-  getStepData(step: StepKey) {
-    return this.stepData.getValue()[step];
-  }
 
   getFakedStep2Data() {
     return this.fakedStep2Data;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -33,6 +33,8 @@ import { BidvThumbnailCardComponent } from '@bidv-ui/addon-commerce';
 import { RegisterMainCardComponent } from '../../form/register-main-card/register-main-card.component';
 import { RegisterSubCardComponent } from '../../form/register-sub-card/register-sub-card.component';
 import { RegisterMainAndSubCardComponent } from '../../form/register-main-and-sub-card/register-main-and-sub-card.component';
+import { IssuanceFormServices } from '../../../../services/issuance-form.service';
+import { CardFormType } from '../../../../models/step-register-detail.model';
 
 export interface StepOption {
   key: string;
@@ -82,17 +84,29 @@ interface SelectItem {
   ],
 })
 export class StepRegisterKHCNComponent {
-  protected readonly strings = [
+  private issuanceFormServices = inject(IssuanceFormServices);
+
+  protected readonly strings: CardFormType[] = [
     'Thẻ chính',
     'Thẻ phụ',
     'Thẻ chính kèm thẻ phụ',
   ];
 
-  protected horizontal = this.strings[0];
+  protected horizontal;
+
+  constructor() {
+    this.horizontal = this.issuanceFormServices.getStepData('step-4-card-form');
+  }
+
+  changeHorizontal(value: string) {
+    this.horizontal = value;
+    this.issuanceFormServices.updateStepData(
+      'step-4-card-form',
+      this.horizontal,
+    );
+  }
 
   formLinked = new FormGroup({
     linked: new FormControl(false),
   });
-
-  
 }

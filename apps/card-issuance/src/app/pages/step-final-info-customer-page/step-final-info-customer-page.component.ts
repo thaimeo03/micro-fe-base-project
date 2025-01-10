@@ -5,11 +5,12 @@ import { issuanceRouter } from '../../constants/router';
 import { Router } from '@angular/router';
 import { BidvExpandModule, BidvSvgModule } from '@bidv-ui/core';
 import { BidvBadgeModule } from '@bidv-ui/kit';
-import { IssuanceServices } from '../../services/issuance.service';
 import { DetailCustommerCnComponent } from '../step-detail-customer-page/step-detail-customer-cn-component/step-detail-cn-customer.component';
 import { FinalMainCardComponent } from './final-main-card/final-main-card.component';
 import { FinalSubCardComponent } from './final-sub-card/final-sub-card.component';
 import { FinalFeeCollectionComponent } from './final-fee-collection/final-fee-collection.component';
+import { IssuanceFormServices } from '../../services/issuance-form.service';
+import { CardFormType } from '../../models/step-register-detail.model';
 
 @Component({
   selector: 'app-step-final-info-customer-page',
@@ -31,7 +32,7 @@ import { FinalFeeCollectionComponent } from './final-fee-collection/final-fee-co
 })
 export class FinalInfoCustomerComponent implements OnInit {
   router = inject(Router);
-  issuanceService = inject(IssuanceServices);
+  private issuanceFormServices = inject(IssuanceFormServices);
 
   breadcrumbs = [
     { label: 'Quản lý giao dịch' },
@@ -40,35 +41,81 @@ export class FinalInfoCustomerComponent implements OnInit {
   title = 'Thông tin KH';
   is_cn = true;
 
+  cardForm: CardFormType = 'Thẻ chính';
   userInfoData!: any;
   mainCardData!: any;
   subCardData!: any;
   feeCollectionData!: any;
 
   constructor() {
-    this.mainCardData = this.issuanceService.formMainCard?.value || {};
-    this.subCardData = this.issuanceService.formSubCard?.value || {};
+    this.mainCardData = this.issuanceFormServices.formMainCard?.value || null;
+    this.subCardData = this.issuanceFormServices.formSubCard?.value || null;
     this.feeCollectionData =
-      this.issuanceService.feeCollectionForm?.value || {};
+      this.issuanceFormServices.feeCollectionForm?.value || null;
   }
 
   ngOnInit(): void {
-    this.issuanceService.stepData$.subscribe((data) => {
-      // if (!data['step-2']) this.router.navigate([issuanceRouter[1]]);
-      // if (
-      //   (!data['step-4-main'] && !data['step-4-sub']) ||
-      //   !data['step-4-fee']
-      // ) {
-      //   this.router.navigate([issuanceRouter[3]]);
-      // }
-
-      console.info(data);
-
+    this.issuanceFormServices.stepData$.subscribe((data) => {
       this.userInfoData = data['step-2'];
-      // this.mainCardData = data['step-4-main'];
-      // this.subCardData = data['step-4-sub'];
-      // this.feeCollectionData = data['step-4-fee'];
+      this.cardForm = this.issuanceFormServices.getStepData('step-4-card-form');
+      this.checkValidForm();
     });
+  }
+
+  private checkValidForm() {
+    if (!this.userInfoData) {
+      this.router.navigate([issuanceRouter[1]]);
+    }
+
+    const validMainCardForm = this.issuanceFormServices.formMainCard?.valid;
+    const validSubCardForm = this.issuanceFormServices.formSubCard?.valid;
+    const validFeeCollectionForm =
+      this.issuanceFormServices.feeCollectionForm?.valid;
+
+    console.log(validMainCardForm, validSubCardForm, validFeeCollectionForm);
+
+    switch (this.cardForm) {
+      case 'Thẻ chính':
+        if (!validMainCardForm || !validFeeCollectionForm) {
+          this.router.navigate([issuanceRouter[3]]);
+          if (!validMainCardForm) {
+            this.issuanceFormServices.formMainCard.markAllAsTouched();
+          }
+          if (!validFeeCollectionForm) {
+            this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
+          }
+        }
+        break;
+      case 'Thẻ phụ':
+        if (!validSubCardForm || !validFeeCollectionForm) {
+          this.router.navigate([issuanceRouter[3]]);
+          if (!validSubCardForm) {
+            this.issuanceFormServices.formSubCard.markAllAsTouched();
+          }
+          if (!validFeeCollectionForm) {
+            this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
+          }
+        }
+        break;
+      case 'Thẻ chính kèm thẻ phụ':
+        if (
+          !validMainCardForm ||
+          !validSubCardForm ||
+          !validFeeCollectionForm
+        ) {
+          this.router.navigate([issuanceRouter[3]]);
+          if (!validMainCardForm) {
+            this.issuanceFormServices.formMainCard.markAllAsTouched();
+          }
+          if (!validSubCardForm) {
+            this.issuanceFormServices.formSubCard.markAllAsTouched();
+          }
+          if (!validFeeCollectionForm) {
+            this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
+          }
+        }
+        break;
+    }
   }
 
   onPreStep(stepKey: number) {

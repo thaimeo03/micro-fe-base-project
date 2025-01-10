@@ -9,6 +9,7 @@ import { DetailCustommerCnComponent } from './step-detail-customer-cn-component/
 import { IdentifierComponent } from './component/identifier-list-component/identifier-list.component';
 import { IssuanceServices } from '../../services/issuance.service';
 import { UserInfo } from '../../models/step-detail-customer.model';
+import { IssuanceFormServices } from '../../services/issuance-form.service';
 
 @Component({
   selector: 'app-step-detail-customer-page',
@@ -29,6 +30,7 @@ import { UserInfo } from '../../models/step-detail-customer.model';
 export class DetailCustommerPageComponent {
   router = inject(Router);
   private issuanceService = inject(IssuanceServices);
+  private issuanceFormService = inject(IssuanceFormServices);
 
   breadcrumbs = [
     { label: 'Quản lý giao dịch' },
@@ -41,6 +43,7 @@ export class DetailCustommerPageComponent {
 
   constructor() {
     this.userInfoData = this.issuanceService.getFakedStep2Data();
+    this.issuanceFormService.updateStepData('step-2', this.userInfoData);
   }
 
   onRowClick(value: any) {

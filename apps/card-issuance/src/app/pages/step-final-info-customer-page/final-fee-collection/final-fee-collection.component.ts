@@ -13,6 +13,7 @@ import {
 } from '@bidv-ui/kit';
 import { DetailItem } from '../../../models';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IssuanceFormServices } from '../../../services/issuance-form.service';
 
 @Component({
   selector: 'app-final-fee-collection',
@@ -33,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class FinalFeeCollectionComponent implements OnInit {
   router = inject(Router);
+  private issuanceFormServices = inject(IssuanceFormServices);
 
   @Input({ required: true }) data!: any;
 
@@ -112,6 +114,15 @@ export class FinalFeeCollectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const { mainCardFee, subCardFee, addressFee } =
+      this.issuanceFormServices.feeCollectionForm.value;
+    const { totalFee, VATFee, revenueFee } =
+      this.issuanceFormServices.calculateFee(
+        mainCardFee,
+        subCardFee,
+        addressFee,
+      );
+    this.data = { ...this.data, totalFee, VATFee, revenueFee };
     this.data = this.formatData(this.data);
   }
 

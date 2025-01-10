@@ -22,10 +22,16 @@
     <app-step-detail-customer-cn *ngIf="userInfoData" [title]="title" [data]="userInfoData" />
 
     <!-- Step 4 - main card -->
-    <app-final-main-card *ngIf="mainCardData" [data]="mainCardData" />
+    <app-final-main-card *ngIf="cardForm === 'Thẻ chính'" [data]="mainCardData" />
 
     <!-- Step 4 - sub card-->
-    <app-final-sub-card *ngIf="subCardData" [data]="subCardData" />
+    <app-final-sub-card *ngIf="cardForm === 'Thẻ phụ'" [data]="subCardData" />
+
+    <!-- Step 4 - main and sub card-->
+    <ng-container *ngIf="cardForm === 'Thẻ chính kèm thẻ phụ'">
+      <app-final-main-card [data]="mainCardData" />
+      <app-final-sub-card [data]="subCardData" />
+    </ng-container>
 
     <!-- Step 4 - fee collection-->
     <app-final-fee-collection *ngIf="feeCollectionData" [data]="feeCollectionData" />
