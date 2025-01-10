@@ -2,8 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   inject,
   Input,
+  OnInit,
+  Output,
 } from '@angular/core';
 import {
   FormControl,
@@ -39,6 +42,7 @@ import {
 } from '@bidv-ui/kit';
 import { FeeCollectionComponent } from '../fee-collection/fee-collection.component';
 import { IssuanceFormServices } from '../../../../services/issuance-form.service';
+import { ReceivedAddressFormComponent } from '../received-address/received-address.component';
 
 interface SelectItem {
   label: string;
@@ -71,6 +75,7 @@ interface SelectItem {
     BidvTooltipModule,
     BidvHintModule,
     FeeCollectionComponent,
+    ReceivedAddressFormComponent,
   ],
   templateUrl: './register-main-card.component.html',
   styleUrls: ['./register-main-card.component.less'],
@@ -81,11 +86,13 @@ interface SelectItem {
     }),
   ],
 })
-export class RegisterMainCardComponent {
+export class RegisterMainCardComponent implements OnInit {
   private issuanceFormServices = inject(IssuanceFormServices);
 
-  @Input()
-  showFeeCollection = true;
+  @Input() showFeeCollection = true;
+  @Input() showReceivedAddress = true;
+
+  @Output() handleChangeShowReceivedAddress = new EventEmitter<boolean>();
 
   protected expandedMainCard = true;
   protected toggleMainCard(): void {
@@ -149,6 +156,16 @@ export class RegisterMainCardComponent {
 
   constructor() {
     this.formMainCard = this.initializeForm();
+  }
+
+  ngOnInit(): void {
+    this.formMainCard.get('cardForm')?.valueChanges.subscribe((value) => {
+      this.handleChangeShowReceivedAddress.emit(value === 'Thẻ vật lý');
+      this.issuanceFormServices.updateStepData(
+        'step-4-received-address',
+        value === 'Thẻ vật lý',
+      );
+    });
   }
 
   initializeForm(): FormGroup {

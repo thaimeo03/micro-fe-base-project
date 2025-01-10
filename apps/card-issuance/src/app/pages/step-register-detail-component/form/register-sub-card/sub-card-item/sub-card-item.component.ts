@@ -74,6 +74,7 @@ export class SubCardItemComponent {
   @Input() questions!: { label: string; value: number }[];
   @Input() subAccs!: { label: string; value: number }[];
   @Input() cardForm!: string[];
+  @Input() showPin!: boolean;
 
   @Output() handleRemoveSubCardItem = new EventEmitter<number>();
 

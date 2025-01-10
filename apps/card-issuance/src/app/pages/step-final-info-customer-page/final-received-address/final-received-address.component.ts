@@ -16,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IssuanceFormServices } from '../../../services/issuance-form.service';
 
 @Component({
-  selector: 'app-final-fee-collection',
+  selector: 'app-final-received-address',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,77 +29,66 @@ import { IssuanceFormServices } from '../../../services/issuance-form.service';
     BidvInputModule,
     BidvTextfieldControllerModule,
   ],
-  templateUrl: './final-fee-collection.component.html',
-  styleUrls: ['./final-fee-collection.component.less'],
+  templateUrl: './final-received-address.component.html',
+  styleUrls: ['./final-received-address.component.less'],
 })
-export class FinalFeeCollectionComponent implements OnInit {
+export class FinalReceivedAddressComponent implements OnInit {
   router = inject(Router);
   private issuanceFormServices = inject(IssuanceFormServices);
 
   @Input({ required: true }) data!: any;
 
+  receivedAddressData: any;
+
   detailItem: DetailItem = {
-    title: 'Thu phí',
+    title: 'Địa chỉ nhận thẻ',
     subDetails: [
       {
-        key: 'typeFee',
-        label: 'Hình thức thanh toán phí',
-        iconLabel: [
-          {
-            name: '',
-            class: '',
-            key: '',
-          },
-        ],
+        key: 'placeRec',
+        iconLabel: [{ name: '', class: '', key: '' }],
+        label: 'Địa điểm nhận thẻ',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'mainCardFee',
+        key: 'transactionOffice',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Phí phát hành thẻ chính',
+        label: 'Chi nhánh/ PGD BIDV',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'subCardFee',
+        key: 'detailAdd',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Phí phát hành thẻ phụ',
+        label: 'Địa chỉ chi tiết',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'addressFee',
+        key: 'province',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Phí trả về địa chỉ KH',
+        label: 'Tỉnh/TP',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'accountFee',
+        key: 'district',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Tài khoản thu phí',
+        label: 'Quận/Huyện',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'totalFee',
+        key: 'ward',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Tổng phí (VND):',
+        label: 'Phường/Xã',
         class: '',
         customElement: undefined,
       },
       {
-        key: 'VATFee',
+        key: 'homeAddress',
         iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Tổng VAT (VND):',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'revenueFee',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Tổng thu (VND):',
+        label: 'Địa chỉ nhà',
         class: '',
         customElement: undefined,
       },
@@ -114,15 +103,6 @@ export class FinalFeeCollectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const { mainCardFee, subCardFee, addressFee } =
-      this.issuanceFormServices.feeCollectionForm.value;
-    const { totalFee, VATFee, revenueFee } =
-      this.issuanceFormServices.calculateFee(
-        mainCardFee,
-        subCardFee,
-        addressFee,
-      );
-    this.data = { ...this.data, totalFee, VATFee, revenueFee };
-    this.data = this.issuanceFormServices.formatData(this.data);
+    this.receivedAddressData = this.issuanceFormServices.formatData(this.data);
   }
 }

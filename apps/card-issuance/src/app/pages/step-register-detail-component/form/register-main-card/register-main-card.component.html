@@ -101,7 +101,8 @@
                         [style.width]="'max-content'" />
                     </div>
                     <div class="card-right">
-                      <bidv-checkbox-labeled formControlName="printPin">In PIN giấy cho thẻ</bidv-checkbox-labeled>
+                      <bidv-checkbox-labeled *ngIf="formMainCard.value.cardForm === 'Thẻ vật lý'"
+                        formControlName="printPin">In PIN giấy cho thẻ</bidv-checkbox-labeled>
                     </div>
                   </div>
                 </label>
@@ -169,6 +170,11 @@
     </bidv-expand>
   </div>
 
-  <!-- Thu phí -->
-  <app-fee-collection *ngIf="showFeeCollection"></app-fee-collection>
 </form>
+
+<!-- Địa chỉ nhận thẻ -->
+<app-received-address
+  *ngIf="showReceivedAddress && formMainCard.value.cardForm === 'Thẻ vật lý'"></app-received-address>
+
+<!-- Thu phí -->
+<app-fee-collection *ngIf="showFeeCollection"></app-fee-collection>

@@ -15,7 +15,8 @@
           <div *ngFor="let subCardItemForm of subCardItemForms.controls; index as i">
             <app-sub-card-item [subCardItemFormGroup]="subCardItemForm" [subCardItemIndex]="i" [mainAcc]="mainAcc"
               [questions]="questions" [subAccs]="subAccs" [cardForm]="cardForm"
-              (handleRemoveSubCardItem)="onRemoveSubCardItem($event)" />
+              (handleRemoveSubCardItem)="onRemoveSubCardItem($event)"
+              [showPin]="subCardItemForm.value.cardType === 'Thẻ vật lý'" />
           </div>
         </ng-container>
       </ng-template>
@@ -24,104 +25,11 @@
       icon="bidvIconPlus" variant="outlined" class="add-sub-card_btn">Thêm thẻ phụ</button>
   </div>
 
-  <!-- Địa điểm nhận diện -->
-  <div class="section">
-    <div class="section-header">
-      <div class="receivice-place">
-        <h3 class="title">Địa điểm nhận diện</h3>
-        <bidv-select [bidvTextfieldCleaner]="true" formControlName="placeRec" [bidvTextfieldLabelOutside]="true"
-          class="select-place">
-          Địa điểm nhận thẻ
-          <input bidvTextfield />
-          <bidv-data-list-wrapper *bidvDataList [items]="placeReceivice" />
-        </bidv-select>
-      </div>
-      <bidv-icon icon="bidvIconChevronDown" (click)="togglePlace()" class="icon-chevron"
-        [class.expanded]="expandedPlace"></bidv-icon>
-    </div>
-    <bidv-expand [expanded]="expandedPlace">
-      <ng-template bidvExpandContent>
-        <div class="page-non-row">
-          <!-- Chi nhánh -->
-          <div class="page-non-col page-non-col-6">
-            <label class="form-item">
-              <div class="bidv-text_title-1">Chi nhánh/ PGD BIDV</div>
 
-              <bidv-input-autocomplete [stringify]="stringifyCombobox" formControlName="transactionOffice">
-                <input bidvTextfield />
-                <bidv-data-list-wrapper *bidvDataList [itemContent]="stringifyCombobox | bidvStringifyContent" [items]="
-                    transactionOffice
-                      | bidvFilterByInputWith : stringifyCombobox
-                  " />
-              </bidv-input-autocomplete>
-            </label>
-          </div>
-          <div class="page-non-col page-non-col-6">
-            <label class="form-item">
-              <div class="bidv-text_title-1">Địa chỉ chi tiết</div>
-              <bidv-input formControlName="detailAdd">
-                Chưa có
-                <input bidvTextfield type="text" />
-              </bidv-input>
-            </label>
-          </div>
-
-          <!-- Địa chỉ khác -->
-          <div class="page-non-col page-non-col-6">
-            <div class="page-non-row">
-              <div class="page-non-col page-non-col-6">
-                <label class="form-item">
-                  <div class="bidv-text_title-1">Tỉnh/TP</div>
-                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="province"
-                    [bidvTextfieldLabelOutside]="true">
-                    - Chọn tỉnh/TP -
-                    <input bidvTextfield />
-                    <bidv-data-list-wrapper *bidvDataList [items]="listProvince" />
-                  </bidv-select>
-                </label>
-              </div>
-              <div class="page-non-col page-non-col-6">
-                <label class="form-item">
-                  <div class="bidv-text_title-1">Quận/Huyện</div>
-                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="district"
-                    [bidvTextfieldLabelOutside]="true">
-                    - Chọn quận/huyện -
-                    <input bidvTextfield />
-                    <bidv-data-list-wrapper *bidvDataList [items]="listDistrict" />
-                  </bidv-select>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="page-non-col page-non-col-6">
-            <div class="page-non-row">
-              <div class="page-non-col page-non-col-6">
-                <label class="form-item">
-                  <div class="bidv-text_title-1">Phường/Xã</div>
-                  <bidv-select [bidvTextfieldCleaner]="true" formControlName="ward" [bidvTextfieldLabelOutside]="true">
-                    - Chọn phường/xã -
-                    <input bidvTextfield />
-                    <bidv-data-list-wrapper *bidvDataList [items]="listWard" />
-                  </bidv-select>
-                </label>
-              </div>
-              <div class="page-non-col page-non-col-6">
-                <label class="form-item">
-                  <div class="bidv-text_title-1">Địa chỉ nhà</div>
-                  <bidv-input formControlName="homeAddress">
-                    Nhập địa chỉ
-                    <input bidvTextfield type="text" />
-                  </bidv-input>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </bidv-expand>
-  </div>
 </form>
+
+<!-- Địa chỉ nhận thẻ -->
+<!-- <app-received-address *ngIf="showReceivedAddress && containPhysicalCard()"></app-received-address> -->
 
 <!-- Thu phí -->
 <app-fee-collection *ngIf="showFeeCollection"></app-fee-collection>

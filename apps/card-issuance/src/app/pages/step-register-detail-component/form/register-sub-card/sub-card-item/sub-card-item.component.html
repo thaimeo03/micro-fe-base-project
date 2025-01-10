@@ -67,7 +67,8 @@
                   [style.width]="'max-content'" />
               </div>
               <div class="card-right">
-                <bidv-checkbox-labeled formControlName="printPin">In PIN giấy cho thẻ</bidv-checkbox-labeled>
+                <bidv-checkbox-labeled *ngIf="showPin" formControlName="printPin">In PIN giấy cho
+                  thẻ</bidv-checkbox-labeled>
               </div>
             </div>
           </label>

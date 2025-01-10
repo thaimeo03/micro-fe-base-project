@@ -39,10 +39,9 @@ export class FinalSubCardComponent implements OnInit {
   @Input({ required: true }) data!: any;
 
   subCardItemsData: any;
-  receivedAddressData: any;
 
-  detailItem1: DetailItem = {
-    title: '',
+  detailItem: DetailItem = {
+    title: 'Thông tin phát hành thẻ phụ',
     subDetails: [
       {
         key: 'cifNumber',
@@ -102,61 +101,6 @@ export class FinalSubCardComponent implements OnInit {
     ],
   };
 
-  detailItem2: DetailItem = {
-    title: '',
-    subDetails: [
-      {
-        key: 'placeRec',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Địa điểm nhận thẻ',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'transactionOffice',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Chi nhánh/ PGD BIDV',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'detailAdd',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Địa chỉ chi tiết',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'province',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Tỉnh/TP',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'district',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Quận/Huyện',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'ward',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Phường/Xã',
-        class: '',
-        customElement: undefined,
-      },
-      {
-        key: 'homeAddress',
-        iconLabel: [{ name: '', class: '', key: '' }],
-        label: 'Địa chỉ nhà',
-        class: '',
-        customElement: undefined,
-      },
-    ],
-  };
-
   expand1 = true;
   protected toggle(code: string): void {
     if (code === '1') {
@@ -168,9 +112,5 @@ export class FinalSubCardComponent implements OnInit {
     this.subCardItemsData = this.data.subCardItemForms.map((item: any) =>
       this.issuanceFormServices.formatData(item),
     );
-
-    const dataClone = { ...this.data };
-    delete dataClone.subCardItemForms;
-    this.receivedAddressData = this.issuanceFormServices.formatData(dataClone);
   }
 }

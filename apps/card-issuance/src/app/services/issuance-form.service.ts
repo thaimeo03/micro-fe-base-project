@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
-type StepKey = 'step-2' | 'step-4-card-form';
+type StepKey = 'step-2' | 'step-4-card-form' | 'step-4-received-address';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,13 @@ export class IssuanceFormServices {
   private stepData = new BehaviorSubject<Record<StepKey, any>>({
     'step-2': null,
     'step-4-card-form': 'Thẻ chính',
+    'step-4-received-address': true,
   });
   stepData$ = this.stepData.asObservable();
 
   formMainCard!: FormGroup;
   formSubCard!: FormGroup;
+  receivedAddressForm!: FormGroup;
   feeCollectionForm!: FormGroup;
 
   // Set forms
@@ -36,6 +38,12 @@ export class IssuanceFormServices {
     return this.feeCollectionForm;
   }
 
+  setReceivedAddressForm(values: any) {
+    this.receivedAddressForm = this.fb.group(values);
+    return this.receivedAddressForm;
+  }
+
+  // Update step data
   updateStepData(step: StepKey, data: any) {
     const curData = this.stepData.getValue();
     this.stepData.next({ ...curData, [step]: data });

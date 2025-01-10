@@ -11,6 +11,7 @@ import { FinalSubCardComponent } from './final-sub-card/final-sub-card.component
 import { FinalFeeCollectionComponent } from './final-fee-collection/final-fee-collection.component';
 import { IssuanceFormServices } from '../../services/issuance-form.service';
 import { CardFormType } from '../../models/step-register-detail.model';
+import { FinalReceivedAddressComponent } from './final-received-address/final-received-address.component';
 
 @Component({
   selector: 'app-step-final-info-customer-page',
@@ -26,6 +27,7 @@ import { CardFormType } from '../../models/step-register-detail.model';
     FinalMainCardComponent,
     FinalSubCardComponent,
     FinalFeeCollectionComponent,
+    FinalReceivedAddressComponent,
   ],
   templateUrl: './step-final-info-customer-page.component.html',
   styleUrls: ['./step-final-info-customer-page.component.less'],
@@ -42,14 +44,18 @@ export class FinalInfoCustomerComponent implements OnInit {
   is_cn = true;
 
   cardForm: CardFormType = 'Thẻ chính';
+  showReceivedAddressData = true;
   userInfoData!: any;
   mainCardData!: any;
   subCardData!: any;
+  receivedAddressData!: any;
   feeCollectionData!: any;
 
   constructor() {
     this.mainCardData = this.issuanceFormServices.formMainCard?.value || null;
     this.subCardData = this.issuanceFormServices.formSubCard?.value || null;
+    this.receivedAddressData =
+      this.issuanceFormServices.receivedAddressForm?.value || null;
     this.feeCollectionData =
       this.issuanceFormServices.feeCollectionForm?.value || null;
   }
@@ -58,6 +64,8 @@ export class FinalInfoCustomerComponent implements OnInit {
     this.issuanceFormServices.stepData$.subscribe((data) => {
       this.userInfoData = data['step-2'];
       this.cardForm = this.issuanceFormServices.getStepData('step-4-card-form');
+      this.showReceivedAddressData = data['step-4-received-address'];
+
       this.checkValidForm();
     });
   }
@@ -69,20 +77,27 @@ export class FinalInfoCustomerComponent implements OnInit {
 
     const validMainCardForm = this.issuanceFormServices.formMainCard?.valid;
     const validSubCardForm = this.issuanceFormServices.formSubCard?.valid;
+    const validReceivedAddressForm =
+      this.issuanceFormServices.receivedAddressForm?.valid;
     const validFeeCollectionForm =
       this.issuanceFormServices.feeCollectionForm?.valid;
 
-    console.log(validMainCardForm, validSubCardForm, validFeeCollectionForm);
-
     switch (this.cardForm) {
       case 'Thẻ chính':
-        if (!validMainCardForm || !validFeeCollectionForm) {
+        if (
+          !validMainCardForm ||
+          !validFeeCollectionForm ||
+          !validReceivedAddressForm
+        ) {
           this.router.navigate([issuanceRouter[3]]);
           if (!validMainCardForm) {
             this.issuanceFormServices.formMainCard.markAllAsTouched();
           }
           if (!validFeeCollectionForm) {
             this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
+          }
+          if (!validReceivedAddressForm) {
+            this.issuanceFormServices.receivedAddressForm.markAllAsTouched();
           }
         }
         break;
@@ -95,13 +110,17 @@ export class FinalInfoCustomerComponent implements OnInit {
           if (!validFeeCollectionForm) {
             this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
           }
+          // if (!validReceivedAddressForm) {
+          //   this.issuanceFormServices.receivedAddressForm.markAllAsTouched();
+          // }
         }
         break;
       case 'Thẻ chính kèm thẻ phụ':
         if (
           !validMainCardForm ||
           !validSubCardForm ||
-          !validFeeCollectionForm
+          !validFeeCollectionForm ||
+          !validReceivedAddressForm
         ) {
           this.router.navigate([issuanceRouter[3]]);
           if (!validMainCardForm) {
@@ -112,6 +131,9 @@ export class FinalInfoCustomerComponent implements OnInit {
           }
           if (!validFeeCollectionForm) {
             this.issuanceFormServices.feeCollectionForm.markAllAsTouched();
+          }
+          if (!validReceivedAddressForm) {
+            this.issuanceFormServices.receivedAddressForm.markAllAsTouched();
           }
         }
         break;

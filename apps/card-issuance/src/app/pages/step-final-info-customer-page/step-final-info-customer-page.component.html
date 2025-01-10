@@ -33,6 +33,9 @@
       <app-final-sub-card [data]="subCardData" />
     </ng-container>
 
+    <!-- Step 4 - received address -->
+    <app-final-received-address *ngIf="showReceivedAddressData && receivedAddressData" [data]="receivedAddressData" />
+
     <!-- Step 4 - fee collection-->
     <app-final-fee-collection *ngIf="feeCollectionData" [data]="feeCollectionData" />
   </div>

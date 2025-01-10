@@ -1,3 +1,5 @@
-<app-register-main-card [showFeeCollection]="false"></app-register-main-card>
-<app-register-sub-card [showFeeCollection]="false"></app-register-sub-card>
+<app-register-main-card [showFeeCollection]="false" [showReceivedAddress]="false"
+  (handleChangeShowReceivedAddress)="onChangeShowReceivedAddress($event)"></app-register-main-card>
+<app-register-sub-card [showFeeCollection]="false" [showReceivedAddress]="false"></app-register-sub-card>
+<app-received-address *ngIf="showReceivedAddressFromMainCard && showReceivedAddressFromSubCard"></app-received-address>
 <app-fee-collection></app-fee-collection>

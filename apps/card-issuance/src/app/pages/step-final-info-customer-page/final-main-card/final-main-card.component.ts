@@ -39,7 +39,7 @@ export class FinalMainCardComponent implements OnInit {
   @Input({ required: true }) data!: any;
 
   detailItem: DetailItem = {
-    title: '',
+    title: 'Thông tin phát hành thẻ chính',
     subDetails: [
       {
         key: 'cardType',
