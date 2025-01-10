@@ -4,7 +4,6 @@ import { BidvPageContainerComponent, StepComponent } from '@libs/components';
 import { Router } from '@angular/router';
 import { StepRegisterKHDNComponent } from './page-container/khdn/step-register-khdn-component.component';
 import { issuanceRouter } from '../../constants/router';
-import { IssuanceServices } from '../../services/issuance.service';
 
 export interface StepOption {
   key: string;

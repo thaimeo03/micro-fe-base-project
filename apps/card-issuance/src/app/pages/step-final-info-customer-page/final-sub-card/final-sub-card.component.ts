@@ -13,6 +13,7 @@ import {
 } from '@bidv-ui/kit';
 import { DetailItem } from '../../../models';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IssuanceFormServices } from '../../../services/issuance-form.service';
 
 @Component({
   selector: 'app-final-sub-card',
@@ -33,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class FinalSubCardComponent implements OnInit {
   router = inject(Router);
+  private issuanceFormServices = inject(IssuanceFormServices);
 
   @Input({ required: true }) data!: any;
 
@@ -164,27 +166,11 @@ export class FinalSubCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.subCardItemsData = this.data.subCardItemForms.map((item: any) =>
-      this.formatData(item),
+      this.issuanceFormServices.formatData(item),
     );
 
     const dataClone = { ...this.data };
     delete dataClone.subCardItemForms;
-    this.receivedAddressData = this.formatData(dataClone);
-  }
-
-  formatData(data: any) {
-    const obj: Record<string, string> = {};
-
-    for (const key in data) {
-      if (Array.isArray(data[key])) {
-        obj[key] = data[key].map((item: any) => item.label).join(' ');
-      } else if (typeof data[key] === 'string') {
-        obj[key] = data[key];
-      } else if (data[key] && typeof data[key] === 'object') {
-        obj[key] = data[key].label;
-      }
-    }
-
-    return obj;
+    this.receivedAddressData = this.issuanceFormServices.formatData(dataClone);
   }
 }
