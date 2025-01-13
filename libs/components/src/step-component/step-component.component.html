@@ -1,32 +1,17 @@
 <div class="step-header">
-  <button
-    bidvIconButton
-    size="s"
-    iconLeft="bidvIconChevronLeftOutline"
-    variant="outlined"
-    (click)="onPreStep()"
-    [disabled]="activeItemIndex === 0"
-  >
+  <button bidvIconButton size="s" iconLeft="bidvIconChevronLeftOutline" variant="outlined" (click)="onPreStep()"
+    [disabled]="activeItemIndex === 0">
     Quay lại
   </button>
   <bidv-stepper class="step-card-issuance" [activeItemIndex]="activeItemIndex">
-    <button
-      class="step-card-issuance_btn"
-      *ngFor="let item of stepOption"
-      bidvStep
-    >
+    <button class="step-card-issuance_btn" *ngFor="let item of stepOption" bidvStep>
       {{ item.label }}
     </button>
   </bidv-stepper>
 
   <div class="action-right">
-    <button
-      bidvIconButton
-      size="s"
-      iconRight="bidvIconChevronRightOutline"
-      (click)="onNextStep()"
-    ></button>
+    <button bidvIconButton size="s" iconRight="bidvIconChevronRightOutline" (click)="onNextStep()"></button>
     <bidv-divider layout="verticle" class="_step-divider" />
-    <action-handle [action]="actionButton" />
+    <action-handle [action]="actionButton" (handleSubmit)="onSubmitAction($event)" />
   </div>
 </div>

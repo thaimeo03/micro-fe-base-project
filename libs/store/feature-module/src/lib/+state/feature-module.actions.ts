@@ -11,3 +11,8 @@ export const loadFeatureModuleFailure = createAction(
   '[FeatureModule/API] Load FeatureModule Failure',
   props<{ error: any }>(),
 );
+
+export const transactionList = createAction(
+  '[FeatureModule/API] Transaction List',
+  props<any>(),
+);

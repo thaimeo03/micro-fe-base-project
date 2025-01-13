@@ -8,7 +8,7 @@ import { provideTranslocoScope } from '@jsverse/transloco';
 @Component({
   standalone: true,
   imports: [CommonModule, BidvAuthModule, RouterOutlet, BidvAuthTeleportModule],
-  selector: 'app-entry',
+  selector: 'app-transaction-entry',
   encapsulation: ViewEncapsulation.None,
   providers: [
     provideTranslocoScope({
@@ -25,6 +25,6 @@ export class RemoteEntryComponent {
     private layoutFacade: LayoutFacade,
   ) {
     this.layoutFacade.setShowApps(true);
-    this.layoutFacade.setLogoUrl('assets/logo.png');
+    this.layoutFacade.setLogoUrl('/assets/logo.png');
   }
 }

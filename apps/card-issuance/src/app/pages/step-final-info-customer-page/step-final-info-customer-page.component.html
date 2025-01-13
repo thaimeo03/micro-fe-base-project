@@ -1,5 +1,6 @@
 <page-non-title-container [breadcrumbs]="breadcrumbs">
-  <step-component extraHeader (handlePrevStep)="onPreStep($event)" [currentStep]="4" />
+  <step-component extraHeader (handlePrevStep)="onPreStep($event)" [currentStep]="4"
+    (handleSubmitAction)="onSubmitAction($event)" />
   <div class="step-content-detail-cus">
     <div *ngIf="userInfoData" class="detai-cus-infomation-wrapper">
       <bidv-svg class="detai-cus-infomation-wrapper_svg" [src]="is_cn? '$bidvPersonal':''"></bidv-svg>

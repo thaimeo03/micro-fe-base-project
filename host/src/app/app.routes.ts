@@ -8,7 +8,13 @@ let appRoutes: Route[] = [
   },
   {
     path: 'card-issuance',
-    loadChildren: () => import('card-issuance/Routes').then((m) => m.remoteRoutes),
+    loadChildren: () =>
+      import('card-issuance/Routes').then((m) => m.remoteRoutes),
+  },
+  {
+    path: 'transaction',
+    loadChildren: () =>
+      import('transaction/Routes').then((m) => m.remoteRoutes),
   },
   {
     path: '',

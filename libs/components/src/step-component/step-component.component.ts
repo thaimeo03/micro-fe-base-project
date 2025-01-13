@@ -62,6 +62,7 @@ export class StepComponent implements AfterViewInit {
 
   @Output() readonly handleNextStep = new EventEmitter<number>();
   @Output() readonly handlePrevStep = new EventEmitter<number>();
+  @Output() readonly handleSubmitAction = new EventEmitter<string>();
 
   activeItemIndex = -1;
   actionButton: ActionHandleSubmit[] = this.getDefaultButtons();
@@ -91,6 +92,10 @@ export class StepComponent implements AfterViewInit {
       this.handlePrevStep.emit(this.activeItemIndex);
       this.updateActionButtons();
     }
+  }
+
+  onSubmitAction(data: string): void {
+    this.handleSubmitAction.emit(data);
   }
 
   private updateActionButtons(): void {

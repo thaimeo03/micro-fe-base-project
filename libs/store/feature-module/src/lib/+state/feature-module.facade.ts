@@ -21,6 +21,9 @@ export class FeatureModuleFacade {
   selectedFeatureModule$ = this.store.pipe(
     select(FeatureModuleSelectors.selectEntity),
   );
+  selectedTransactionList$ = this.store.pipe(
+    select(FeatureModuleSelectors.selectTransactionList),
+  );
 
   /**
    * Use the initialization action to perform one
@@ -42,6 +45,14 @@ export class FeatureModuleFacade {
     this.store.dispatch(
       FeatureModuleActions.loadFeatureModuleSuccess({
         featureModule: [{ id: 2, name: '2' }],
+      }),
+    );
+  }
+
+  setTransactionData(data: any) {
+    this.store.dispatch(
+      FeatureModuleActions.transactionList({
+        transactionList: data,
       }),
     );
   }

@@ -10,6 +10,7 @@ export interface FeatureModuleState extends EntityState<FeatureModuleEntity> {
   selectedId?: string | number; // which FeatureModule record has been selected
   loaded: boolean; // has the FeatureModule list been loaded
   error?: string | null; // last known error (if any)
+  transactionList?: any;
 }
 
 export interface FeatureModulePartialState {
@@ -40,6 +41,10 @@ const reducer = createReducer(
   on(FeatureModuleActions.loadFeatureModuleFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+  on(FeatureModuleActions.transactionList, (state, { transactionList }) => ({
+    ...state,
+    transactionList,
   })),
 );
 

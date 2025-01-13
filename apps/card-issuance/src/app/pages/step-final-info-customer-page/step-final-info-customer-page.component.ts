@@ -12,6 +12,7 @@ import { FinalFeeCollectionComponent } from './final-fee-collection/final-fee-co
 import { IssuanceFormServices } from '../../services/issuance-form.service';
 import { CardFormType } from '../../models/step-register-detail.model';
 import { FinalReceivedAddressComponent } from './final-received-address/final-received-address.component';
+import { FeatureModuleFacade, StoreFeatureModuleModule } from '@libs/store';
 
 @Component({
   selector: 'app-step-final-info-customer-page',
@@ -28,13 +29,16 @@ import { FinalReceivedAddressComponent } from './final-received-address/final-re
     FinalSubCardComponent,
     FinalFeeCollectionComponent,
     FinalReceivedAddressComponent,
+    StoreFeatureModuleModule,
   ],
+  providers: [FeatureModuleFacade],
   templateUrl: './step-final-info-customer-page.component.html',
   styleUrls: ['./step-final-info-customer-page.component.less'],
 })
 export class FinalInfoCustomerComponent implements OnInit {
   router = inject(Router);
   private issuanceFormServices = inject(IssuanceFormServices);
+  private featureModuleFacade = inject(FeatureModuleFacade);
 
   breadcrumbs = [
     { label: 'Quản lý giao dịch' },
@@ -142,5 +146,20 @@ export class FinalInfoCustomerComponent implements OnInit {
 
   onPreStep(stepKey: number) {
     this.router.navigate([issuanceRouter[stepKey]]);
+  }
+
+  onSubmitAction(data: string): void {
+    switch (data) {
+      case 'approve':
+        this.featureModuleFacade.setTransactionData({
+          userInfoData: this.userInfoData,
+          mainCardData: this.mainCardData,
+          subCardData: this.subCardData,
+          receivedAddressData: this.receivedAddressData,
+          feeCollectionData: this.feeCollectionData,
+        });
+        this.router.navigate(['transaction/list']);
+        break;
+    }
   }
 }
