@@ -164,6 +164,7 @@ export class RegisterSubCardComponent {
 
   constructor() {
     this.formSubCard = this.initializeForm();
+    this.issuanceFormServices.updateStepData('step-4-received-address', false);
   }
 
   initializeForm() {

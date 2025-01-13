@@ -156,6 +156,7 @@ export class RegisterMainCardComponent implements OnInit {
 
   constructor() {
     this.formMainCard = this.initializeForm();
+    this.issuanceFormServices.updateStepData('step-4-received-address', true);
   }
 
   ngOnInit(): void {
