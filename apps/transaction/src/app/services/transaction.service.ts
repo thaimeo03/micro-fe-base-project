@@ -3,34 +3,16 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TransactionService {
-  private fakedTransactionList: any[] = [
-    {
-      id: 1,
-      cifoffDesc: 'Nguyen Van A',
-      acn: '85082',
-      oin: '084069000125',
-      status: 0,
-    },
-    {
-      id: 2,
-      cifoffDesc: 'Nguyen Van B',
-      acn: '85082',
-      oin: '084069000125',
-      status: 0,
-    },
-    {
-      id: 3,
-      cifoffDesc: 'Nguyen Van C',
-      acn: '85082',
-      oin: '084069000125',
-      status: 1,
-    },
-  ];
-
+  private fakedTransactionList: any[] = [];
   fakedTransactionList$ = new BehaviorSubject(this.fakedTransactionList);
 
   addNewTransaction(newData: any) {
     this.fakedTransactionList.push(newData);
     this.fakedTransactionList$.next(this.fakedTransactionList);
+  }
+
+  getTransactionDetail(id: number) {
+    console.log(this.fakedTransactionList);
+    return this.fakedTransactionList.find((item) => item.id === id);
   }
 }

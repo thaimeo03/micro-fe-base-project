@@ -8,4 +8,11 @@ export const PageRoutes: Route[] = [
         (m) => m.TransactionListComponent,
       ),
   },
+  {
+    path: 'list/:id',
+    loadComponent: () =>
+      import('./transaction-detail/transaction-detail.component').then(
+        (m) => m.TransactionDetailComponent,
+      ),
+  },
 ];

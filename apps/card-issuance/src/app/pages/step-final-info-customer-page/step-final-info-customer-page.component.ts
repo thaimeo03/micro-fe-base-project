@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BidvPageContainerComponent, StepComponent } from '@libs/components';
 import { issuanceRouter } from '../../constants/router';
 import { Router } from '@angular/router';
@@ -152,13 +152,15 @@ export class FinalInfoCustomerComponent implements OnInit {
     switch (data) {
       case 'approve':
         this.featureModuleFacade.setTransactionData({
+          cardForm: this.cardForm, // Use to determine which form to show
+          showReceivedAddressData: this.showReceivedAddressData, // Use to determine whether can show received address
           userInfoData: this.userInfoData,
           mainCardData: this.mainCardData,
           subCardData: this.subCardData,
           receivedAddressData: this.receivedAddressData,
           feeCollectionData: this.feeCollectionData,
         });
-        this.router.navigate(['transaction/list']);
+        this.router.navigate([issuanceRouter[0]]);
         break;
     }
   }

@@ -1,0 +1,41 @@
+<page-non-title-container [breadcrumbs]="breadcrumbs">
+  <div class="step-content-detail-cus">
+    <div *ngIf="userInfoData" class="detai-cus-infomation-wrapper">
+      <bidv-svg class="detai-cus-infomation-wrapper_svg" [src]="is_cn? '$bidvPersonal':''"></bidv-svg>
+      <div class="detai-cus-infomation-wrapper_info">
+        <span class="bidv-text_headline-7">
+          CIF: {{userInfoData.acn}} - {{userInfoData.bocDesc}}
+        </span>
+        <div class="detai-cus-infomation-wrapper_badge">
+          <bidv-badge class="badge-green" iconLeft="bidvIconRibbonStar" shape="square">
+            {{userInfoData.ccode}}
+          </bidv-badge>
+          <bidv-badge iconLeft="bidvIconContactCard" appearance="gray" shape="square">
+            CCCD: {{userInfoData.oin}}
+          </bidv-badge>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail customer -->
+    <app-detail-customer-cn *ngIf="userInfoData" [data]="userInfoData" />
+
+    <!-- Main card -->
+    <app-detail-main-card *ngIf="cardForm === 'Thẻ chính'" [data]="mainCardData" />
+
+    <!-- Sub card -->
+    <app-detail-sub-card *ngIf="cardForm === 'Thẻ phụ'" [data]="subCardData" />
+
+    <!-- Main and sub card -->
+    <ng-container *ngIf="cardForm === 'Thẻ chính kèm thẻ phụ'">
+      <app-detail-main-card [data]="mainCardData" />
+      <app-detail-sub-card [data]="subCardData" />
+    </ng-container>
+
+    <!-- Received address -->
+    <app-detail-received-address *ngIf="showReceivedAddressData" [data]="receivedAddressData" />
+
+    <!-- Fee collection -->
+    <app-detail-fee-collection *ngIf="feeCollectionData" [data]="feeCollectionData" />
+  </div>
+</page-non-title-container>

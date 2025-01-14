@@ -1,0 +1,34 @@
+<div class="bidv-detail-card-info">
+  <div class="title flex-8 space-between items-center" (click)="toggle('1')">
+    <span class="bidv-text_headline-7">{{ detailItem.title }}</span>
+  </div>
+
+  <bidv-divider *ngIf="expand1" />
+
+  <bidv-expand [expanded]="expand1">
+    <div class="mt-4">
+      <div class="grid grid-cols-12 gap-4" style="padding: 16px 24px;">
+        <ng-container *ngFor="let item of detailItem.subDetails">
+          <div class="col-span-3">
+            <div class="bidv-text_body-2 text-neutral-low flex flex-col">
+              {{ item.label }}
+              <ng-container [ngSwitch]="item.customElement?.type"
+                *ngIf="receivedAddressData && receivedAddressData[item.key];else NoData">
+                <bidv-badge *ngSwitchCase="'badge'" [size]="item.customElement?.options?.size??'s'"
+                  [class]="item.customElement?.options?.class" [iconLeft]="item.customElement?.options?.icon">
+                  {{ receivedAddressData[item.key]}}
+                </bidv-badge>
+                <div *ngSwitchDefault class="bidv-text_body-1 text-neutral-default">
+                  {{ receivedAddressData[item.key] }}
+                </div>
+              </ng-container>
+              <ng-template #NoData>
+                <span>--</span>
+              </ng-template>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </bidv-expand>
+</div>

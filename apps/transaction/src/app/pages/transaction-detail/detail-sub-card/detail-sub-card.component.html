@@ -1,0 +1,36 @@
+<div class="bidv-detail-card-info">
+  <div class="title flex-8 space-between items-center" (click)="toggle('1')">
+    <span class="bidv-text_headline-7">{{ detailItem.title }}</span>
+  </div>
+
+  <bidv-divider *ngIf="expand1" />
+
+  <bidv-expand [expanded]="expand1">
+    <ng-container *ngFor="let itemData of subCardItemsData; index as i">
+      <div class="mt-4">
+        <span class="font-semibold pl-6">Thẻ phụ {{ i + 1 }}</span>
+        <div class="grid grid-cols-12 gap-4" style="padding: 16px 24px;">
+          <ng-container *ngFor="let item of detailItem.subDetails">
+            <div class="col-span-4">
+              <div class="bidv-text_body-2 text-neutral-low flex flex-col">
+                {{ item.label }}
+                <ng-container [ngSwitch]="item.customElement?.type" *ngIf="itemData && itemData[item.key];else NoData">
+                  <bidv-badge *ngSwitchCase="'badge'" [size]="item.customElement?.options?.size??'s'"
+                    [class]="item.customElement?.options?.class" [iconLeft]="item.customElement?.options?.icon">
+                    {{ itemData[item.key]}}
+                  </bidv-badge>
+                  <div *ngSwitchDefault class="bidv-text_body-1 text-neutral-default">
+                    {{ itemData[item.key] }}
+                  </div>
+                </ng-container>
+                <ng-template #NoData>
+                  <span>--</span>
+                </ng-template>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </bidv-expand>
+</div>

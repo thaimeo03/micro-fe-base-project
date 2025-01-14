@@ -1,0 +1,64 @@
+.detai-cus-infomation-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  &_svg {
+    width: 56px;
+    aspect-ratio: 1;
+  }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  &_badge {
+    display: flex;
+    gap: 4px;
+  }
+}
+
+.p-16 {
+  padding: 16px;
+}
+.flex-8 {
+  display: flex;
+  gap: 8px;
+}
+.flex-4 {
+  display: flex;
+  gap: 4px;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+
+.expand-icon {
+  color: var(--foreground-neutral-lowest);
+}
+
+.badge-green {
+  --t-background-color: var(--background-semantic-positive-subtle);
+  --t-text-color: var(--text-semantic-positive-intermediate);
+  --t-icon-color: var(--foreground-semantic-positive-intermediate);
+}
+.badge-orange {
+  --t-background-color: var(--background-semantic-notice-subtle);
+  --t-text-color: var(--text-semantic-notice-intermediate);
+  --t-icon-color: var(--foreground-semantic-notice-intermediate);
+}
+
+.badge-red {
+  --t-background-color: var(--background-semantic-negative-subtle);
+  --t-text-color: var(--text-semantic-negative-intermediate);
+  --t-icon-color: var(--foreground-semantic-negative-intermediate);
+}
+
+.badge-blue {
+  --t-background-color: var(--background-semantic-informative-subtle);
+  --t-text-color: var(--text-semantic-informative-intermediate);
+  --t-icon-color: var(--foreground-semantic-infomative-intermediate);
+}
