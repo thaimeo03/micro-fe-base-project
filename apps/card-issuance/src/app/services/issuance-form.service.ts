@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { mainCardInit } from '../constants/form-initialization';
 
 type StepKey = 'step-2' | 'step-4-card-form' | 'step-4-received-address';
 
@@ -41,6 +42,11 @@ export class IssuanceFormServices {
   setReceivedAddressForm(values: any) {
     this.receivedAddressForm = this.fb.group(values);
     return this.receivedAddressForm;
+  }
+
+  // Reset forms
+  resetForms() {
+    this.formMainCard.reset(mainCardInit, { emitEvent: false });
   }
 
   // Update step data

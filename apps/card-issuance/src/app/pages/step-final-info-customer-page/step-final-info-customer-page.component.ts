@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BidvPageContainerComponent, StepComponent } from '@libs/components';
 import { issuanceRouter } from '../../constants/router';
 import { Router } from '@angular/router';
@@ -65,13 +65,16 @@ export class FinalInfoCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.issuanceFormServices.stepData$.subscribe((data) => {
-      this.userInfoData = data['step-2'];
-      this.cardForm = this.issuanceFormServices.getStepData('step-4-card-form');
-      this.showReceivedAddressData = data['step-4-received-address'];
+    this.issuanceFormServices.stepData$
+      .subscribe((data) => {
+        this.userInfoData = data['step-2'];
+        this.cardForm =
+          this.issuanceFormServices.getStepData('step-4-card-form');
+        this.showReceivedAddressData = data['step-4-received-address'];
 
-      this.checkValidForm();
-    });
+        this.checkValidForm();
+      })
+      .unsubscribe();
   }
 
   private checkValidForm() {
@@ -160,6 +163,7 @@ export class FinalInfoCustomerComponent implements OnInit {
           receivedAddressData: this.receivedAddressData,
           feeCollectionData: this.feeCollectionData,
         });
+        this.issuanceFormServices.resetForms();
         this.router.navigate([issuanceRouter[0]]);
         break;
     }
