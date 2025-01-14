@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
 import { ColDef, ColGroupDef, GridOptions } from 'ag-grid-community';
 import { StoreFeatureModuleModule, FeatureModuleFacade } from '@libs/store';
 import { BadgeStatusComponent } from './badge-status/badge-status.component';
+import { TransactionService } from '../../services/transaction.service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -12,8 +13,9 @@ import { BadgeStatusComponent } from './badge-status/badge-status.component';
   templateUrl: './transaction-list.component.html',
   styleUrls: ['./transaction-list.component.scss'],
 })
-export class TransactionListComponent {
+export class TransactionListComponent implements OnInit {
   private featureModuleFacade = inject(FeatureModuleFacade);
+  private transactionService = inject(TransactionService);
 
   colDefs: Array<ColDef | ColGroupDef> = [];
   rowData: any[] = [];
@@ -32,12 +34,30 @@ export class TransactionListComponent {
       resizable: true,
     };
     this.createColumnDefs();
-    this.rowData = this.fakeData();
-    this.featureModuleFacade.selectedTransactionList$.subscribe((data) => {
-      if (data) {
-        this.updateRowData(data);
-      }
-    });
+  }
+
+  ngOnInit(): void {
+    this.transactionService.fakedTransactionList$
+      .subscribe((data) => {
+        this.rowData = data;
+      })
+      .unsubscribe();
+
+    this.featureModuleFacade.selectedTransactionList$
+      .subscribe((data) => {
+        if (data) {
+          this.transactionService.addNewTransaction({
+            id: this.rowData.length + 1,
+            cifoffDesc: data?.userInfoData.cifoffDesc,
+            acn: data?.userInfoData.acn,
+            oin: data?.userInfoData.oin,
+            status: 0,
+          });
+
+          this.featureModuleFacade.setTransactionData(null);
+        }
+      })
+      .unsubscribe();
   }
 
   private createColumnDefs(): void {
@@ -145,47 +165,5 @@ export class TransactionListComponent {
         sortable: true,
       },
     ];
-  }
-
-  private fakeData() {
-    return [
-      ...this.rowData,
-      {
-        id: 1,
-        cifoffDesc: 'Nguyen Van A',
-        acn: '85082',
-        oin: '084069000125',
-        status: 0,
-      },
-      {
-        id: 2,
-        cifoffDesc: 'Nguyen Van B',
-        acn: '85082',
-        oin: '084069000125',
-        status: 0,
-      },
-      {
-        id: 3,
-        cifoffDesc: 'Nguyen Van C',
-        acn: '85082',
-        oin: '084069000125',
-        status: 1,
-      },
-    ];
-  }
-
-  private updateRowData(data: any) {
-    this.rowData = [
-      ...this.rowData,
-      {
-        id: this.rowData.length + 1,
-        cifoffDesc: data?.userInfoData.cifoffDesc,
-        acn: data?.userInfoData.acn,
-        oin: data?.userInfoData.oin,
-        status: 0,
-      },
-    ];
-
-    console.log(this.rowData);
   }
 }
