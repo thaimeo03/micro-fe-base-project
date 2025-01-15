@@ -26,13 +26,13 @@ export class BadgeStatusComponent implements ICellRendererAngularComp {
         this.customClass = 'badge-green';
         break;
 
-      default:
-        this.label = 'Chờ duyệt';
-        this.customClass = 'badge-orange';
+      case 2:
+        this.label = 'Đã từ chối';
+        this.customClass = 'badge-red';
     }
   }
 
   refresh(params: ICellRendererParams<any, any, any>): boolean {
-    return true;
+    return false;
   }
 }

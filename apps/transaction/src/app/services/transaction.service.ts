@@ -12,7 +12,16 @@ export class TransactionService {
   }
 
   getTransactionDetail(id: number) {
-    console.log(this.fakedTransactionList);
     return this.fakedTransactionList.find((item) => item.id === id);
+  }
+
+  updateTransactionStatus(id: number, status: number) {
+    this.fakedTransactionList = this.fakedTransactionList.map((item) => {
+      if (item.id === id) {
+        item.status = status;
+      }
+      return item;
+    });
+    this.fakedTransactionList$.next(this.fakedTransactionList);
   }
 }

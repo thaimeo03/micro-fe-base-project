@@ -158,6 +158,7 @@ export class FinalInfoCustomerComponent implements OnInit {
         this.featureModuleFacade.setTransactionData({
           cardForm: this.cardForm, // Use to determine which form to show
           showReceivedAddressData: this.showReceivedAddressData, // Use to determine whether can show received address
+          status: 0, // Use to determine which status transaction with 0: pending, 1: approved, 2: rejected
           userInfoData: this.userInfoData,
           mainCardData: this.mainCardData,
           subCardData: this.subCardData,
@@ -165,7 +166,7 @@ export class FinalInfoCustomerComponent implements OnInit {
           feeCollectionData: this.feeCollectionData,
         });
         this.resetForms();
-        this.router.navigate([issuanceRouter[0]]);
+        this.router.navigate(['transaction/list']);
         break;
     }
   }

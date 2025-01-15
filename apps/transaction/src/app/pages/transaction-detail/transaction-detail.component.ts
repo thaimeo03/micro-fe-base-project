@@ -3,7 +3,12 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BidvExpandModule, BidvSvgModule } from '@bidv-ui/core';
 import { BidvBadgeModule } from '@bidv-ui/kit';
-import { BidvPageContainerComponent, StepComponent } from '@libs/components';
+import {
+  ActionHandleComponent,
+  ActionHandleSubmit,
+  BidvPageContainerComponent,
+  StepComponent,
+} from '@libs/components';
 import { TransactionService } from '../../services/transaction.service';
 import { DetailCustomerCnComponent } from './detail-customer-cn/detail-customer-cn.component';
 import { DetailMainCardComponent } from './detail-main-card/detail-main-card.component';
@@ -27,6 +32,7 @@ import { FinalFeeCollectionComponent } from './detail-fee-collection/detail-fee-
     DetailSubCardComponent,
     FinalReceivedAddressComponent,
     FinalFeeCollectionComponent,
+    ActionHandleComponent,
   ],
   templateUrl: './transaction-detail.component.html',
   styleUrls: ['./transaction-detail.component.scss'],
@@ -53,6 +59,8 @@ export class TransactionDetailComponent {
   receivedAddressData!: any;
   feeCollectionData!: any;
 
+  actionButton: ActionHandleSubmit[] = this.getActionButtons();
+
   constructor() {
     this.metadata = this.transactionService.getTransactionDetail(
       Number(this.id),
@@ -69,5 +77,70 @@ export class TransactionDetailComponent {
     this.receivedAddressData = this.metadata.receivedAddressData;
     this.feeCollectionData = this.metadata.feeCollectionData;
     console.log(this.feeCollectionData);
+  }
+
+  onSubmitAction(data: string) {
+    switch (data) {
+      case 'approve':
+        this.transactionService.updateTransactionStatus(Number(this.id), 1);
+        break;
+      case 'reject':
+        this.transactionService.updateTransactionStatus(Number(this.id), 2);
+        break;
+    }
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  private getActionButtons(): ActionHandleSubmit[] {
+    return [
+      {
+        id: 1,
+        code: 'approve',
+        hideKey: 'approveButton',
+        label: 'Phê duyệt',
+        variant: 'filled',
+        appearance: 'primary',
+      },
+      {
+        id: 2,
+        code: 'reject',
+        hideKey: 'rejectButton',
+        label: 'Từ chối',
+        variant: 'outlined',
+        appearance: 'primary',
+      },
+      {
+        id: 3,
+        code: 'send-email',
+        hideKey: 'sendEmailButton',
+        label: 'Gửi email',
+        variant: 'outlined',
+        appearance: 'primary',
+      },
+      {
+        id: 4,
+        code: 'biometrics',
+        hideKey: 'biometricsButton',
+        label: 'Sinh trắc học',
+        variant: 'outlined',
+        appearance: 'primary',
+      },
+      {
+        id: 5,
+        code: 'ecm',
+        hideKey: 'ecmButton',
+        label: 'ECM',
+        variant: 'outlined',
+        appearance: 'primary',
+      },
+      {
+        id: 6,
+        code: 'svs',
+        hideKey: 'svsButton',
+        label: 'SVS',
+        variant: 'outlined',
+        appearance: 'primary',
+      },
+    ];
   }
 }

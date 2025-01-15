@@ -1,20 +1,24 @@
 <page-non-title-container [breadcrumbs]="breadcrumbs">
-  <div class="step-content-detail-cus">
-    <div *ngIf="userInfoData" class="detai-cus-infomation-wrapper">
-      <bidv-svg class="detai-cus-infomation-wrapper_svg" [src]="is_cn? '$bidvPersonal':''"></bidv-svg>
-      <div class="detai-cus-infomation-wrapper_info">
-        <span class="bidv-text_headline-7">
-          CIF: {{userInfoData.acn}} - {{userInfoData.bocDesc}}
-        </span>
-        <div class="detai-cus-infomation-wrapper_badge">
-          <bidv-badge class="badge-green" iconLeft="bidvIconRibbonStar" shape="square">
-            {{userInfoData.ccode}}
-          </bidv-badge>
-          <bidv-badge iconLeft="bidvIconContactCard" appearance="gray" shape="square">
-            CCCD: {{userInfoData.oin}}
-          </bidv-badge>
+  <div class="step-content-detail-cus mt-2">
+    <div class="flex justify-between">
+      <div *ngIf="userInfoData" class="detai-cus-infomation-wrapper">
+        <bidv-svg class="detai-cus-infomation-wrapper_svg" [src]="is_cn? '$bidvPersonal':''"></bidv-svg>
+        <div class="detai-cus-infomation-wrapper_info">
+          <span class="bidv-text_headline-7">
+            CIF: {{userInfoData.acn}} - {{userInfoData.bocDesc}}
+          </span>
+          <div class="detai-cus-infomation-wrapper_badge">
+            <bidv-badge class="badge-green" iconLeft="bidvIconRibbonStar" shape="square">
+              {{userInfoData.ccode}}
+            </bidv-badge>
+            <bidv-badge iconLeft="bidvIconContactCard" appearance="gray" shape="square">
+              CCCD: {{userInfoData.oin}}
+            </bidv-badge>
+          </div>
         </div>
       </div>
+
+      <action-handle [action]="actionButton" (handleSubmit)="onSubmitAction($event)" />
     </div>
 
     <!-- Detail customer -->

@@ -187,7 +187,7 @@ export const receivedAddressInit = {
 };
 
 export const feeCollectionInit = {
-  feeType: feeCollectionData.feeType[0],
+  typeFee: feeCollectionData.feeType[0],
   mainCardFee: 0,
   subCardFee: 0,
   addressFee: 0,
