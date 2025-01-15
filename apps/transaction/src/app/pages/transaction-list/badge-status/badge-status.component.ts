@@ -13,22 +13,27 @@ import { ICellRendererParams } from 'ag-grid-community';
 export class BadgeStatusComponent implements ICellRendererAngularComp {
   customClass = 'badge-orange';
   label = 'Chờ duyệt';
+  iconLeft = 'bidvIconClock';
 
   agInit(params: ICellRendererParams<any, any, any>): void {
     switch (params.value) {
       case 0:
         this.label = 'Chờ duyệt';
         this.customClass = 'badge-orange';
+        this.iconLeft = 'bidvIconClock';
         break;
 
       case 1:
         this.label = 'Đã duyệt';
         this.customClass = 'badge-green';
+        this.iconLeft = 'bidvIconCheck';
         break;
 
       case 2:
         this.label = 'Đã từ chối';
         this.customClass = 'badge-red';
+        this.iconLeft = 'bidvIconClose';
+        break;
     }
   }
 
