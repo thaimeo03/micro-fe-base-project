@@ -1,7 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { mainCardInit, subCardInit } from '../constants/form-initialization';
+import {
+  feeCollectionInit,
+  mainCardInit,
+  receivedAddressInit,
+  subCardInit,
+} from '../constants/form-initialization';
 
 type StepKey = 'step-2' | 'step-4-card-form' | 'step-4-received-address';
 
@@ -45,13 +50,24 @@ export class IssuanceFormServices {
   }
 
   // Reset forms
-  resetForms() {
+  resetMainCardForm() {
     this.formMainCard.reset(mainCardInit, { emitEvent: false });
+  }
+
+  resetSubCardForm() {
     this.formSubCard.setControl(
       'subCardItemForms',
       this.fb.array([this.fb.group(subCardInit)]),
       { emitEvent: false },
     );
+  }
+
+  resetReceivedAddressForm() {
+    this.receivedAddressForm.reset(receivedAddressInit, { emitEvent: false });
+  }
+
+  resetFeeCollectionForm() {
+    this.feeCollectionForm.reset(feeCollectionInit, { emitEvent: false });
   }
 
   // Update step data

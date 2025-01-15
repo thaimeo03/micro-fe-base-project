@@ -70,7 +70,8 @@ export class FinalInfoCustomerComponent implements OnInit {
         this.userInfoData = data['step-2'];
         this.cardForm =
           this.issuanceFormServices.getStepData('step-4-card-form');
-        this.showReceivedAddressData = data['step-4-received-address'];
+        this.showReceivedAddressData =
+          this.cardForm === 'Thẻ phụ' ? false : data['step-4-received-address'];
 
         this.checkValidForm();
       })
@@ -163,9 +164,25 @@ export class FinalInfoCustomerComponent implements OnInit {
           receivedAddressData: this.receivedAddressData,
           feeCollectionData: this.feeCollectionData,
         });
-        this.issuanceFormServices.resetForms();
+        this.resetForms();
         this.router.navigate([issuanceRouter[0]]);
         break;
     }
+  }
+
+  private resetForms() {
+    switch (this.cardForm) {
+      case 'Thẻ chính':
+        this.issuanceFormServices.resetMainCardForm();
+        break;
+      case 'Thẻ phụ':
+        this.issuanceFormServices.resetSubCardForm();
+        break;
+      case 'Thẻ chính kèm thẻ phụ':
+        this.issuanceFormServices.resetMainCardForm();
+        this.issuanceFormServices.resetSubCardForm();
+    }
+    this.issuanceFormServices.resetReceivedAddressForm();
+    this.issuanceFormServices.resetFeeCollectionForm();
   }
 }

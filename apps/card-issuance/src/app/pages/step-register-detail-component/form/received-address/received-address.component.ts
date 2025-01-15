@@ -36,6 +36,7 @@ import {
   BidvStringifyContentPipeModule,
 } from '@bidv-ui/kit';
 import { IssuanceFormServices } from '../../../../services/issuance-form.service';
+import { receivedAddressData } from '../../../../constants/form-initialization';
 
 interface SelectItem {
   label: string;
@@ -87,42 +88,15 @@ export class ReceivedAddressFormComponent {
     this.expandedPlace = !this.expandedPlace;
   }
 
-  placeReceivice = [
-    { label: 'Chi nhánh/PGD BIDV', value: 1 },
-    { label: 'Địa chỉ thường trú', value: 2 },
-    { label: 'Địa chỉ liên hệ', value: 3 },
-    { label: 'Địa chỉ khác', value: 4 },
-  ];
+  placeReceivice = receivedAddressData.placeReceivice;
 
-  transactionOffice = [
-    { label: '120151 - PGD Tràng Tiền', value: 1 },
-    { label: '120151 - PGD Hoàn Kiếm', value: 2 },
-    { label: '123871 - PGD Hà Thành', value: 3 },
-    { label: '111463 - PGD Phan Bội Châu', value: 4 },
-    { label: '197316 - PGD Hàng Bông', value: 5 },
-    { label: '176425 - PGD Khâm Thiên', value: 6 },
-  ];
+  transactionOffice = receivedAddressData.transactionOffice;
 
-  listProvince = [
-    { label: 'Thành phố Hà Nội', value: 1 },
-    { label: 'Thành phố Hồ Chí Minh', value: 2 },
-    { label: 'Thành phố Hải Phòng', value: 3 },
-    { label: 'Tỉnh Hà Nam', value: 4 },
-  ];
+  listProvince = receivedAddressData.listProvince;
 
-  listDistrict = [
-    { label: 'Quận Hoàn Kiếm', value: 1 },
-    { label: 'Quận Đống Đa', value: 2 },
-    { label: 'Quận Thanh Xuân', value: 3 },
-    { label: 'Quận Cầu Giấy', value: 4 },
-  ];
+  listDistrict = receivedAddressData.listDistrict;
 
-  listWard = [
-    { label: 'Phường Tràng Tiền', value: 1 },
-    { label: 'Phường Nhân Chính', value: 2 },
-    { label: 'Phường Cửa Đông', value: 3 },
-    { label: 'Phường Cửa Nam', value: 4 },
-  ];
+  listWard = receivedAddressData.listWard;
 
   receivedAddressForm: FormGroup;
 

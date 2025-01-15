@@ -31,6 +31,7 @@ import {
   BidvMultiSelectModule,
 } from '@bidv-ui/kit';
 import { IssuanceFormServices } from '../../../../services/issuance-form.service';
+import { feeCollectionData } from '../../../../constants/form-initialization';
 
 @Component({
   standalone: true,
@@ -64,17 +65,9 @@ import { IssuanceFormServices } from '../../../../services/issuance-form.service
 export class FeeCollectionComponent implements OnInit {
   private issuanceFormService = inject(IssuanceFormServices);
 
-  feeType = [
-    { label: 'Hình thức thanh toán phí 1', value: 1 },
-    { label: 'Hình thức thanh toán phí 2', value: 2 },
-    { label: 'Hình thức thanh toán phí 3', value: 3 },
-    { label: 'Hình thức thanh toán phí 4', value: 4 },
-  ];
+  feeType = feeCollectionData.feeType;
 
-  feeAccount = [
-    { label: '01678741346 - 100,000,000 VND', value: 1 },
-    { label: '01234567890 - 150,000,000 VND', value: 2 },
-  ];
+  feeAccount = feeCollectionData.feeAccount;
 
   feeCollectionForm: FormGroup;
 

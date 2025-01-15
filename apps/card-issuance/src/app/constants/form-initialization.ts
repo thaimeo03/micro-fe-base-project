@@ -1,3 +1,4 @@
+// Fake form data
 export const mainCardData = {
   typeCard: [
     { label: 'Thẻ ghi nợ quốc tế', value: 1 },
@@ -96,6 +97,58 @@ export const subCardItemData = {
   cardForm: ['Thẻ vật lý', 'Thẻ phi vật lý'],
 };
 
+export const receivedAddressData = {
+  placeReceivice: [
+    { label: 'Chi nhánh/PGD BIDV', value: 1 },
+    { label: 'Địa chỉ thường trú', value: 2 },
+    { label: 'Địa chỉ liên hệ', value: 3 },
+    { label: 'Địa chỉ khác', value: 4 },
+  ],
+  transactionOffice: [
+    { label: '120151 - PGD Tràng Tiền', value: 1 },
+    { label: '120151 - PGD Hoàn Kiếm', value: 2 },
+    { label: '123871 - PGD Hà Thành', value: 3 },
+    { label: '111463 - PGD Phan Bội Châu', value: 4 },
+    { label: '197316 - PGD Hàng Bông', value: 5 },
+    { label: '176425 - PGD Khâm Thiên', value: 6 },
+  ],
+
+  listProvince: [
+    { label: 'Thành phố Hà Nội', value: 1 },
+    { label: 'Thành phố Hồ Chí Minh', value: 2 },
+    { label: 'Thành phố Hải Phòng', value: 3 },
+    { label: 'Tỉnh Hà Nam', value: 4 },
+  ],
+
+  listDistrict: [
+    { label: 'Quận Hoàn Kiếm', value: 1 },
+    { label: 'Quận Đống Đa', value: 2 },
+    { label: 'Quận Thanh Xuân', value: 3 },
+    { label: 'Quận Cầu Giấy', value: 4 },
+  ],
+
+  listWard: [
+    { label: 'Phường Tràng Tiền', value: 1 },
+    { label: 'Phường Nhân Chính', value: 2 },
+    { label: 'Phường Cửa Đông', value: 3 },
+    { label: 'Phường Cửa Nam', value: 4 },
+  ],
+};
+
+export const feeCollectionData = {
+  feeType: [
+    { label: 'Hình thức thanh toán phí 1', value: 1 },
+    { label: 'Hình thức thanh toán phí 2', value: 2 },
+    { label: 'Hình thức thanh toán phí 3', value: 3 },
+    { label: 'Hình thức thanh toán phí 4', value: 4 },
+  ],
+  feeAccount: [
+    { label: '01678741346 - 100,000,000 VND', value: 1 },
+    { label: '01234567890 - 150,000,000 VND', value: 2 },
+  ],
+};
+
+// form initialization
 export const mainCardInit = {
   cardType: mainCardData.typeCard[0],
   productCode: mainCardData.productCode[0],
@@ -120,4 +173,23 @@ export const subCardInit = {
   printPin: false,
   subAcc: null,
   answer: null,
+};
+
+export const receivedAddressInit = {
+  transactionOffice: receivedAddressData.transactionOffice[0],
+  placeRec: receivedAddressData.placeReceivice[0],
+  detailAdd: '',
+  cardProduct: '',
+  province: receivedAddressData.listProvince[0],
+  district: receivedAddressData.listDistrict[0],
+  ward: receivedAddressData.listWard[0],
+  homeAddress: '',
+};
+
+export const feeCollectionInit = {
+  feeType: feeCollectionData.feeType[0],
+  mainCardFee: 0,
+  subCardFee: 0,
+  addressFee: 0,
+  accountFee: null,
 };
