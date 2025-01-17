@@ -95,7 +95,7 @@ export class FinalInfoCustomerComponent implements OnInit {
         if (
           !validMainCardForm ||
           !validFeeCollectionForm ||
-          !validReceivedAddressForm
+          (!validReceivedAddressForm && this.showReceivedAddressData)
         ) {
           this.router.navigate([issuanceRouter[3]]);
           if (!validMainCardForm) {
