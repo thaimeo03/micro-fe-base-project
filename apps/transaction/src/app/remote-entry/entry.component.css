@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Flex utilities */
 .flex {
   display: flex;
 }
@@ -7,6 +9,35 @@
   justify-content: space-between;
 }
 
+.flex.justify-end {
+  justify-content: flex-end;
+}
+
+/* Margin utilities */
+
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+/* Width utilities */
+.w-full {
+  width: 100%;
+}
+
+/* Gap utilities */
+
+.gap-2 {
+  gap: 0.5rem /* 8px */;
 }

@@ -1,4 +1,15 @@
-<section style="margin-top: 1rem; width: 100%;">
-  <bidv-ag-grid style="height: 100%;" class="ag-theme-alpine" [columnDefs]="colDefs" [rowData]="rowData"
-    [rowHeight]="rowHeight" [defaultColDef]="defaultColDef" [gridOptions]="gridOptions" enableCellTextSelection />
-</section>
+<div class="mt-4">
+  <section class="w-full flex justify-end">
+    <div class="flex gap-2 mr-4">
+      <button (click)="handleRejectTransactions()" bidvButton appearance="primary" variant="outlined" size="s">Từ
+        chối</button>
+      <button (click)="handleApproveTransactions()" bidvButton appearance="primary" variant="filled" size="s">Phê
+        duyệt</button>
+    </div>
+  </section>
+
+  <section class="mt-2 w-full">
+    <bidv-ag-grid style="height: 100%;" class="ag-theme-alpine" [columnDefs]="colDefs" [rowData]="rowData"
+      [rowHeight]="rowHeight" [defaultColDef]="defaultColDef" [gridOptions]="gridOptions" enableCellTextSelection />
+  </section>
+</div>

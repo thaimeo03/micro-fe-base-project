@@ -3,7 +3,9 @@ import { AgGridModule } from 'ag-grid-angular';
 import {
   ColDef,
   ColGroupDef,
+  GridApi,
   GridOptions,
+  GridReadyEvent,
   RowClickedEvent,
 } from 'ag-grid-community';
 import { StoreFeatureModuleModule, FeatureModuleFacade } from '@libs/store';
@@ -11,11 +13,12 @@ import { BadgeStatusComponent } from './badge-status/badge-status.component';
 import { TransactionService } from '../../services/transaction.service';
 import { Router } from '@angular/router';
 import { TransactionRoutes } from '../../constants/router';
+import { BidvButtonModule } from '@bidv-ui/core';
 
 @Component({
   selector: 'app-transaction-list',
   standalone: true,
-  imports: [AgGridModule, StoreFeatureModuleModule],
+  imports: [AgGridModule, StoreFeatureModuleModule, BidvButtonModule],
   providers: [FeatureModuleFacade],
   templateUrl: './transaction-list.component.html',
   styleUrls: ['./transaction-list.component.scss'],
@@ -25,6 +28,7 @@ export class TransactionListComponent implements OnInit {
   private featureModuleFacade = inject(FeatureModuleFacade);
   private transactionService = inject(TransactionService);
 
+  gridApi!: GridApi;
   colDefs: Array<ColDef | ColGroupDef> = [];
   rowData: any[] = [];
   defaultColDef: ColDef;
@@ -35,6 +39,7 @@ export class TransactionListComponent implements OnInit {
     suppressRowClickSelection: true,
     unSortIcon: true,
     onRowClicked: this.handleRowClick.bind(this),
+    onGridReady: this.onGridReady.bind(this),
   };
 
   constructor() {
@@ -63,6 +68,10 @@ export class TransactionListComponent implements OnInit {
         }
       })
       .unsubscribe();
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
   }
 
   private createColumnDefs(): void {
@@ -162,6 +171,20 @@ export class TransactionListComponent implements OnInit {
   handleRowClick(event: RowClickedEvent): void {
     console.log('handleRowClick', event);
     this.router.navigate([TransactionRoutes.detail, event.data.id]);
+  }
+
+  handleRejectTransactions() {
+    // Should be handle call api instead
+    this.gridApi.getSelectedRows().forEach((selectedRow) => {
+      this.transactionService.updateTransactionStatus(selectedRow.id, 2);
+    });
+  }
+
+  handleApproveTransactions() {
+    // Should be handle call api instead
+    this.gridApi.getSelectedRows().forEach((selectedRow) => {
+      this.transactionService.updateTransactionStatus(selectedRow.id, 1);
+    });
   }
 
   private formatData(transactionList: any) {
